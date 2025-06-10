@@ -1,31 +1,40 @@
-from fastapi.exceptions import RequestValidationError
+from fastapi import HTTPException
 
 # Schemas
 from app.schemas.transcribe import TranscribeRequest, TranscribeResponse
 
+# Providers
+from app.services.providers.whisper_local import WhisperLocalProvider
+
 
 class TranscriptionManager:
-    _providers = {
-        # "openai": OpenAIProvider(),
-        # "whisper": WhisperLocalProvider(),
-    }
-
     @staticmethod
     def transcribe(request: TranscribeRequest):
-        provider_name = (
-            request.provider.value
-        )  # If enum, .value; otherwise just request.provider
-        provider = TranscriptionManager._providers.get(provider_name)
-        print(f"TranscriptionManager: Using provider '{provider_name}'")
+        audio_url = request.audio_url
+        provider_name = request.provider.value
+        model_name = request.model.value if request.model else "base"
 
-        if not provider:
-            raise RequestValidationError(f"Unsupported provider: {provider_name}")
+        if provider_name == "whisper":
+            provider = WhisperLocalProvider(model_size=model_name)
+        elif provider_name == "openai":
+            raise HTTPException(
+                status_code=422, detail=f"OpenAI provider is not yet implemented."
+            )
+        # provider = OpenAIProvider(...)  # in future
+        else:
+            raise HTTPException(
+                status_code=422, detail=f"Unsupported provider: {provider_name}"
+            )
 
-        result = provider.transcribe(request.audio_url, request.model)
+        # Call the provider's transcribe method
+        result = provider.transcribe(audio_url)
 
         return TranscribeResponse(
             status="success",
-            # provider=provider_name,
-            # transcript=result["transcript"],
-            # metadata=result.get("meta"),
+            provider=provider_name,
+            model=model_name,
+            audio_url=audio_url,
+            transcript=result["transcript"],
+            language=result.get("language"),
+            segments=result.get("segments"),
         )

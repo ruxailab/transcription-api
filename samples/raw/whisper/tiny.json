@@ -1,0 +1,365 @@
+{
+  "text": " The Volvo XC60 Discover more on VolvoCars.co.uk With every Starbucks order, you're not just getting a cup of coffee. You're helping support farmers who grow coffee across the globe. Show yourself some love with love honey From luxury accessories, soothing massage oils and carefully crafted gifts. This bundle is designed to enhance your personal pleasure. Start your adoption journey today with a dot south. You could be a forever family to a child who needs love and stability for life. If you have an urgent medical problem, you can visit 111.nhs.uk or call 111. Look after yourself and get the right care in the right place. The body shop sell is on from nourishing skincare to trendy makeup. Five fragrances to pampering body care. Sponsored child with world vision and see a child's life change before your eyes. Become a child's sponsor this Christmas. Such world vision today. The new world is a world that is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.0,
+      "end": 6.0,
+      "text": " The Volvo XC60 Discover more on VolvoCars.co.uk",
+      "tokens": [
+        50364, 440, 43381, 1783, 34, 4550, 40386, 544, 322, 43381, 34, 685, 13,
+        1291, 13, 2034, 50664
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.18924886172579736,
+      "compression_ratio": 1.5055350553505535,
+      "no_speech_prob": 0.7145426273345947
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 6.0,
+      "end": 10.0,
+      "text": " With every Starbucks order, you're not just getting a cup of coffee.",
+      "tokens": [
+        50664, 2022, 633, 26303, 1668, 11, 291, 434, 406, 445, 1242, 257, 4414,
+        295, 4982, 13, 50864
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.18924886172579736,
+      "compression_ratio": 1.5055350553505535,
+      "no_speech_prob": 0.7145426273345947
+    },
+    {
+      "id": 2,
+      "seek": 0,
+      "start": 10.0,
+      "end": 14.0,
+      "text": " You're helping support farmers who grow coffee across the globe.",
+      "tokens": [
+        50864, 509, 434, 4315, 1406, 11339, 567, 1852, 4982, 2108, 264, 15371,
+        13, 51064
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.18924886172579736,
+      "compression_ratio": 1.5055350553505535,
+      "no_speech_prob": 0.7145426273345947
+    },
+    {
+      "id": 3,
+      "seek": 0,
+      "start": 14.0,
+      "end": 17.0,
+      "text": " Show yourself some love with love honey",
+      "tokens": [51064, 6895, 1803, 512, 959, 365, 959, 8330, 51214],
+      "temperature": 0.0,
+      "avg_logprob": -0.18924886172579736,
+      "compression_ratio": 1.5055350553505535,
+      "no_speech_prob": 0.7145426273345947
+    },
+    {
+      "id": 4,
+      "seek": 0,
+      "start": 17.0,
+      "end": 22.0,
+      "text": " From luxury accessories, soothing massage oils and carefully crafted gifts.",
+      "tokens": [
+        51214, 3358, 15558, 18207, 11, 40704, 16145, 22177, 293, 7500, 36213,
+        11449, 13, 51464
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.18924886172579736,
+      "compression_ratio": 1.5055350553505535,
+      "no_speech_prob": 0.7145426273345947
+    },
+    {
+      "id": 5,
+      "seek": 0,
+      "start": 22.0,
+      "end": 26.0,
+      "text": " This bundle is designed to enhance your personal pleasure.",
+      "tokens": [
+        51464, 639, 24438, 307, 4761, 281, 11985, 428, 2973, 6834, 13, 51664
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.18924886172579736,
+      "compression_ratio": 1.5055350553505535,
+      "no_speech_prob": 0.7145426273345947
+    },
+    {
+      "id": 6,
+      "seek": 0,
+      "start": 26.0,
+      "end": 29.0,
+      "text": " Start your adoption journey today with a dot south.",
+      "tokens": [
+        51664, 6481, 428, 19215, 4671, 965, 365, 257, 5893, 7377, 13, 51814
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.18924886172579736,
+      "compression_ratio": 1.5055350553505535,
+      "no_speech_prob": 0.7145426273345947
+    },
+    {
+      "id": 7,
+      "seek": 2900,
+      "start": 29.0,
+      "end": 33.0,
+      "text": " You could be a forever family to a child who needs love and stability for life.",
+      "tokens": [
+        50364, 509, 727, 312, 257, 5680, 1605, 281, 257, 1440, 567, 2203, 959,
+        293, 11826, 337, 993, 13, 50564
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19784759521484374,
+      "compression_ratio": 1.6550522648083623,
+      "no_speech_prob": 0.010640271939337254
+    },
+    {
+      "id": 8,
+      "seek": 2900,
+      "start": 33.0,
+      "end": 39.0,
+      "text": " If you have an urgent medical problem, you can visit 111.nhs.uk or call 111.",
+      "tokens": [
+        50564, 759, 291, 362, 364, 19022, 4625, 1154, 11, 291, 393, 3441, 502,
+        5348, 13, 77, 71, 82, 13, 2034, 420, 818, 502, 5348, 13, 50864
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19784759521484374,
+      "compression_ratio": 1.6550522648083623,
+      "no_speech_prob": 0.010640271939337254
+    },
+    {
+      "id": 9,
+      "seek": 2900,
+      "start": 39.0,
+      "end": 42.0,
+      "text": " Look after yourself and get the right care in the right place.",
+      "tokens": [
+        50864, 2053, 934, 1803, 293, 483, 264, 558, 1127, 294, 264, 558, 1081,
+        13, 51014
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19784759521484374,
+      "compression_ratio": 1.6550522648083623,
+      "no_speech_prob": 0.010640271939337254
+    },
+    {
+      "id": 10,
+      "seek": 2900,
+      "start": 42.0,
+      "end": 46.0,
+      "text": " The body shop sell is on from nourishing skincare to trendy makeup.",
+      "tokens": [
+        51014, 440, 1772, 3945, 3607, 307, 322, 490, 22683, 3807, 29461, 281,
+        38596, 6567, 13, 51214
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19784759521484374,
+      "compression_ratio": 1.6550522648083623,
+      "no_speech_prob": 0.010640271939337254
+    },
+    {
+      "id": 11,
+      "seek": 2900,
+      "start": 46.0,
+      "end": 48.0,
+      "text": " Five fragrances to pampering body care.",
+      "tokens": [
+        51214, 9436, 17599, 2676, 281, 30738, 20055, 1772, 1127, 13, 51314
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19784759521484374,
+      "compression_ratio": 1.6550522648083623,
+      "no_speech_prob": 0.010640271939337254
+    },
+    {
+      "id": 12,
+      "seek": 2900,
+      "start": 48.0,
+      "end": 53.0,
+      "text": " Sponsored child with world vision and see a child's life change before your eyes.",
+      "tokens": [
+        51314, 1738, 892, 2769, 1440, 365, 1002, 5201, 293, 536, 257, 1440, 311,
+        993, 1319, 949, 428, 2575, 13, 51564
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19784759521484374,
+      "compression_ratio": 1.6550522648083623,
+      "no_speech_prob": 0.010640271939337254
+    },
+    {
+      "id": 13,
+      "seek": 2900,
+      "start": 53.0,
+      "end": 56.0,
+      "text": " Become a child's sponsor this Christmas.",
+      "tokens": [51564, 44308, 257, 1440, 311, 16198, 341, 5272, 13, 51714],
+      "temperature": 0.0,
+      "avg_logprob": -0.19784759521484374,
+      "compression_ratio": 1.6550522648083623,
+      "no_speech_prob": 0.010640271939337254
+    },
+    {
+      "id": 14,
+      "seek": 2900,
+      "start": 56.0,
+      "end": 58.0,
+      "text": " Such world vision today.",
+      "tokens": [51714, 9653, 1002, 5201, 965, 13, 51814],
+      "temperature": 0.0,
+      "avg_logprob": -0.19784759521484374,
+      "compression_ratio": 1.6550522648083623,
+      "no_speech_prob": 0.010640271939337254
+    },
+    {
+      "id": 15,
+      "seek": 5900,
+      "start": 59.0,
+      "end": 62.0,
+      "text": " The new world is a world that is very beautiful.",
+      "tokens": [
+        50364, 440, 777, 1002, 307, 257, 1002, 300, 307, 588, 2238, 13, 50514
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 16,
+      "seek": 5900,
+      "start": 62.0,
+      "end": 64.0,
+      "text": " The world is very beautiful.",
+      "tokens": [50514, 440, 1002, 307, 588, 2238, 13, 50614],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 17,
+      "seek": 5900,
+      "start": 64.0,
+      "end": 67.0,
+      "text": " The world is very beautiful.",
+      "tokens": [50614, 440, 1002, 307, 588, 2238, 13, 50764],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 18,
+      "seek": 5900,
+      "start": 67.0,
+      "end": 69.0,
+      "text": " The world is very beautiful.",
+      "tokens": [50764, 440, 1002, 307, 588, 2238, 13, 50864],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 19,
+      "seek": 5900,
+      "start": 69.0,
+      "end": 72.0,
+      "text": " The world is very beautiful.",
+      "tokens": [50864, 440, 1002, 307, 588, 2238, 13, 51014],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 20,
+      "seek": 5900,
+      "start": 72.0,
+      "end": 74.0,
+      "text": " The world is very beautiful.",
+      "tokens": [51014, 440, 1002, 307, 588, 2238, 13, 51114],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 21,
+      "seek": 5900,
+      "start": 74.0,
+      "end": 77.0,
+      "text": " The world is very beautiful.",
+      "tokens": [51114, 440, 1002, 307, 588, 2238, 13, 51264],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 22,
+      "seek": 5900,
+      "start": 77.0,
+      "end": 79.0,
+      "text": " The world is very beautiful.",
+      "tokens": [51264, 440, 1002, 307, 588, 2238, 13, 51364],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 23,
+      "seek": 5900,
+      "start": 79.0,
+      "end": 81.0,
+      "text": " The world is very beautiful.",
+      "tokens": [51364, 440, 1002, 307, 588, 2238, 13, 51464],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 24,
+      "seek": 5900,
+      "start": 81.0,
+      "end": 83.0,
+      "text": " The world is very beautiful.",
+      "tokens": [51464, 440, 1002, 307, 588, 2238, 13, 51564],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 25,
+      "seek": 5900,
+      "start": 83.0,
+      "end": 85.0,
+      "text": " The world is very beautiful.",
+      "tokens": [51564, 440, 1002, 307, 588, 2238, 13, 51664],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    },
+    {
+      "id": 26,
+      "seek": 5900,
+      "start": 85.0,
+      "end": 87.0,
+      "text": " The world is very beautiful.",
+      "tokens": [51664, 440, 1002, 307, 588, 2238, 13, 51764],
+      "temperature": 0.0,
+      "avg_logprob": -0.5246304262031629,
+      "compression_ratio": 6.327586206896552,
+      "no_speech_prob": 0.8162857890129089
+    }
+  ],
+  "language": "en"
+}

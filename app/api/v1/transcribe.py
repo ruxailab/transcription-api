@@ -1,5 +1,4 @@
-from fastapi import APIRouter, status, HTTPException
-from fastapi.exceptions import RequestValidationError
+from fastapi import APIRouter, status
 
 # Schemas
 from app.schemas.common import ErrorResponse
@@ -49,9 +48,4 @@ def transcribe(request: TranscribeRequest):
     Transcription endpoint to handle audio transcription requests.
     This is a placeholder for the actual transcription logic.
     """
-    try:
-        return TranscriptionManager.transcribe(request)
-    except RequestValidationError as ve:
-        # raise RequestValidationError("Unsupported provider")
-        # Thrown by Me
-        raise HTTPException(status_code=400, detail=str(ve))
+    return TranscriptionManager.transcribe(request)
