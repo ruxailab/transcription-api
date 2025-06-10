@@ -8,6 +8,7 @@ from app.schemas.common import ErrorResponse
 # Routes
 from app.api.v1 import health
 
+# Initialize FastAPI application
 app = FastAPI(
     title="Transcription Backend",
     description="API for audio transcription and health monitoring",
@@ -55,3 +56,8 @@ async def internal_error_handler(request: Request, exc: Exception):
 
 
 app.include_router(health.router, prefix="/api/v1")
+
+
+# Example of how to access settings in the app
+# from app.core.config import settings  # or from config import settings if in same file
+# print("OPENAI_API_KEY =", settings.openai_api_key)
