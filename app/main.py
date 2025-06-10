@@ -7,6 +7,7 @@ from app.schemas.common import ErrorResponse
 
 # Routes
 from app.api.v1 import health
+from app.api.v1 import transcribe
 
 # Initialize FastAPI application
 app = FastAPI(
@@ -56,6 +57,7 @@ async def internal_error_handler(request: Request, exc: Exception):
 
 
 app.include_router(health.router, prefix="/api/v1")
+app.include_router(transcribe.router, prefix="/api/v1")
 
 
 # Example of how to access settings in the app
