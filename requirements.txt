@@ -1,4 +1,7 @@
 fastapi[standard]
+pytest
+
+openai-whisper
 
 # PyTorch (do NOT hardcode a platform-specific build here)
 # Users Must install the right version manually

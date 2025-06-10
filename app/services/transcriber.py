@@ -20,11 +20,6 @@ class TranscriptionManager:
             raise HTTPException(
                 status_code=422, detail=f"OpenAI provider is not yet implemented."
             )
-        # provider = OpenAIProvider(...)  # in future
-        else:
-            raise HTTPException(
-                status_code=422, detail=f"Unsupported provider: {provider_name}"
-            )
 
         # Call the provider's transcribe method
         result = provider.transcribe(audio_url)

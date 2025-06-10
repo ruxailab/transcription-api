@@ -37,7 +37,7 @@ async def validation_error_handler(request: Request, exc: RequestValidationError
             status="error",
             message=summary_message,
             details="; ".join(field_errors),
-        ).dict(),
+        ).model_dump(),
     )
 
 
@@ -52,7 +52,7 @@ async def internal_error_handler(request: Request, exc: Exception):
         content=ErrorResponse(
             status="error",
             message="Something went wrong on our side. Please try again later.",
-        ).dict(),
+        ).model_dump(),
     )
 
 
