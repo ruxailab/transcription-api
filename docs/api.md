@@ -6,9 +6,9 @@ This document describes the REST API endpoints exposed by the transcription back
 
 ## 📑 Table of Contents
 
-- [🔹 Base URL](#-base-url)
-- [🛡️ GET `/health`](#️-get-health)
-- [🔁 POST `/transcribe`](#-post-transcribe)
+- [Base URL](#-base-url)
+- [GET `/health`](#️-get-health)
+- [POST `/transcribe`](#-post-transcribe)
 
   - [🔎 Supported Providers](#-supported-providers)
 
@@ -16,15 +16,15 @@ This document describes the REST API endpoints exposed by the transcription back
 
 ---
 
-## 🔹 Base URL
+## Base URL
 
 ```
-http://localhost:8000/v1
+http://localhost:8000/api/v1
 ```
 
 ---
 
-## 🛡️ GET `/health`
+## GET `/health`
 
 Simple health check to verify the API is online.
 
@@ -32,17 +32,28 @@ Simple health check to verify the API is online.
 
 ```json
 {
-  "status": "ok"
+  "status": "ok",
+  "message": "Service is running"
+}
+```
+
+### Response Body (500 Internal Server Error)
+
+```json
+{
+  "status": "error",
+  "message": "Something went wrong on our side. Please try again later."
 }
 ```
 
 ### Possible Status Codes
 
 - `200 OK` – Server is healthy
+- `500 Internal Server Error` – Something critical failed (e.g., database or dependency error)
 
 ---
 
-## 🔁 POST `/transcribe`
+## POST `/transcribe`
 
 Transcribes an audio file using the selected provider.
 
