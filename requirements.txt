@@ -1,6 +1,8 @@
 fastapi[standard]
 pytest
 
+pydantic_settings
+
 openai-whisper
 
 # PyTorch (do NOT hardcode a platform-specific build here)

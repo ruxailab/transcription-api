@@ -5,14 +5,16 @@ import tempfile
 
 from fastapi import HTTPException
 
+from app.core.config import settings
+
 # Base Provider
 from app.services.providers.base import BaseProvider
 
 
 @lru_cache(maxsize=4)  # Cache up to 4 model sizes: "tiny", "base", "medium", "large"
 def get_whisper_model(model_size: str):
-    print(f"🔁 Loading Whisper model: {model_size}")
-    return whisper.load_model(model_size)
+    print(f"🔁 Loading Whisper model: {model_size} to {settings.device}")
+    return whisper.load_model(model_size).to(settings.device)
 
 
 class WhisperLocalProvider(BaseProvider):
