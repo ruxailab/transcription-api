@@ -16,6 +16,34 @@ router = APIRouter()
     status_code=status.HTTP_200_OK,  # ✅ Explicit 200 code (optional, but clear)
     response_model=TranscribeResponse,  # ✅ Runtime validation + docs + schema
     responses={
+        200: {
+            "model": TranscribeRequest,
+            "description": "Transcription successful",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "status": "success",
+                        "provider": "whisper",
+                        "model": "tiny",
+                        "audio_url": "https://example.com/audio.mp3",
+                        "transcript": "Transcribed text goes here.",
+                        "language": "en",
+                        "segments": [
+                            {
+                                "start": 0.0,
+                                "end": 5.0,
+                                "text": "This is the first segment of the transcription.",
+                            },
+                            {
+                                "start": 5.1,
+                                "end": 10.0,
+                                "text": "This is the second segment of the transcription.",
+                            },
+                        ],
+                    }
+                }
+            },
+        },
         422: {
             "model": ErrorResponse,
             "description": "Validation Error",
