@@ -5,6 +5,7 @@ from app.schemas.transcribe import TranscribeRequest, TranscribeResponse
 
 # Providers
 from app.services.providers.whisper_local import WhisperLocalProvider
+from app.services.providers.open_ai import OpenAIProvider
 
 
 class TranscriptionManager:
@@ -17,8 +18,12 @@ class TranscriptionManager:
         if provider_name == "whisper":
             provider = WhisperLocalProvider(model_size=model_name)
         elif provider_name == "openai":
+            provider = OpenAIProvider(model_name=model_name)
+        else:
+            # This Point will not be reached due to Schema validation by FastAPI :D
             raise HTTPException(
-                status_code=422, detail=f"OpenAI provider is not yet implemented."
+                status_code=422,
+                detail=f"Provider '{provider_name}' is not supported.",
             )
 
         # Call the provider's transcribe method

@@ -3,6 +3,7 @@ pytest
 
 pydantic_settings
 
+openai
 openai-whisper
 
 # PyTorch (do NOT hardcode a platform-specific build here)

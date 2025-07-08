@@ -4,11 +4,15 @@ from typing import Optional
 
 
 class TranscriptionModel(str, Enum):
+    # Local Whisper models
     tiny = "tiny"
     base = "base"
     medium = "medium"
     large = "large"
+    # OpenAI models for transcription
     whisper_1 = "whisper-1"
+    gpt_4o_transcribe = "gpt-4o-transcribe"
+    gpt_4o_mini_transcribe = "gpt-4o-mini-transcribe"
 
 
 class TranscriptionProvider(str, Enum):
@@ -25,7 +29,7 @@ class TranscribeRequest(BaseModel):
             "Name of the transcription model to use.\n\n"
             "🧠 **Available models by provider:**\n"
             "- `whisper`: `tiny`, `base`, `medium`, `large`\n"
-            "- `openai`: `whisper-1`"
+            "- `openai`: `whisper-1` , `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`"
         ),
         json_schema_extra={"example": "tiny"},
     )
@@ -40,7 +44,7 @@ class TranscribeRequest(BaseModel):
 
         # Define model compatibility per provider
         whisper_models = {"tiny", "base", "medium", "large"}
-        openai_models = {"whisper-1"}
+        openai_models = {"whisper-1", "gpt_4o_transcribe", "gpt_4o_mini_transcribe"}
 
         if provider == TranscriptionProvider.whisper and model not in whisper_models:
             raise ValueError(f"Model '{model}' is not valid for provider 'whisper'")
@@ -53,8 +57,7 @@ class TranscribeRequest(BaseModel):
 
 class TranscribeResponse(BaseModel):
     status: str = Field(..., json_schema_extra={"example": "success"})
-    # transcript: str = Field(
-    #     ..., json_schema_extra={"example": "Transcribed text goes here."}
+
     provider: TranscriptionProvider = Field(
         ..., json_schema_extra={"example": "whisper"}
     )
@@ -64,7 +67,7 @@ class TranscribeResponse(BaseModel):
             "Name of the transcription model used.\n\n"
             "🧠 **Available models by provider:**\n"
             "- `whisper`: `tiny`, `base`, `medium`, `large`\n"
-            "- `openai`: `whisper-1`"
+            "- `openai`: `whisper-1` , `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`"
         ),
         json_schema_extra={"example": "tiny"},
     )
