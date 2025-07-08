@@ -18,6 +18,7 @@ def test_transcribe_invalid_provider():
     assert "provider" in data["details"]
 
 
+############## Whsiper Provider Tests ##############
 def test_transcribe_invalid_model_for_whisper():
     response = client.post(
         "/api/v1/transcribe",
@@ -33,7 +34,7 @@ def test_transcribe_invalid_model_for_whisper():
     assert "Model 'any' is not valid for provider 'whisper'" in str(data)
 
 
-def test_transcribe_invalid_url():
+def test_transcribe_whsiper_invalid_url():
     response = client.post(
         "/api/v1/transcribe",
         json={"audio_url": "not-a-valid-url", "provider": "whisper", "model": "tiny"},
@@ -75,6 +76,37 @@ def test_transcribe_whisper_tiny_success():
         assert "start" in segment and isinstance(segment["start"], (int, float))
         assert "end" in segment and isinstance(segment["end"], (int, float))
         assert "text" in segment and isinstance(segment["text"], str)
+
+
+############## OpenAI Provider Tests ##############
+def test_transcribe_invalid_model_for_openai():
+    response = client.post(
+        "/api/v1/transcribe",
+        json={
+            "audio_url": "https://example.com/audio.mp3",
+            "provider": "openai",
+            "model": "any",  # Not valid for whisper
+        },
+    )
+
+    assert response.status_code == 422
+    data = response.json()
+    assert "Model 'any' is not valid for provider 'openai'" in str(data)
+
+
+def test_transcribe_openai_invalid_url():
+    response = client.post(
+        "/api/v1/transcribe",
+        json={
+            "audio_url": "not-a-valid-url",
+            "provider": "openai",
+            "model": "whisper-1",
+        },
+    )
+    assert response.status_code == 422  # Pydantic will reject invalid HttpUrl
+    data = response.json()
+    assert data["status"] == "error"
+    assert "audio_url" in data["details"]
 
 
 # # Uncomment this test if you have OpenAI API key configured (Takes Cost :D)
