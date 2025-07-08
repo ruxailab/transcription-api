@@ -11,8 +11,6 @@ class TranscriptionModel(str, Enum):
     large = "large"
     # OpenAI models for transcription
     whisper_1 = "whisper-1"
-    gpt_4o_transcribe = "gpt-4o-transcribe"
-    gpt_4o_mini_transcribe = "gpt-4o-mini-transcribe"
 
 
 class TranscriptionProvider(str, Enum):
@@ -29,7 +27,7 @@ class TranscribeRequest(BaseModel):
             "Name of the transcription model to use.\n\n"
             "🧠 **Available models by provider:**\n"
             "- `whisper`: `tiny`, `base`, `medium`, `large`\n"
-            "- `openai`: `whisper-1` , `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`"
+            "- `openai`: `whisper-1`"
         ),
         json_schema_extra={"example": "tiny"},
     )
@@ -67,7 +65,7 @@ class TranscribeResponse(BaseModel):
             "Name of the transcription model used.\n\n"
             "🧠 **Available models by provider:**\n"
             "- `whisper`: `tiny`, `base`, `medium`, `large`\n"
-            "- `openai`: `whisper-1` , `gpt-4o-transcribe`, `gpt-4o-mini-transcribe`"
+            "- `openai`: `whisper-1`"
         ),
         json_schema_extra={"example": "tiny"},
     )
