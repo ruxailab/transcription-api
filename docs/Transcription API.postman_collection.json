@@ -1,0 +1,1320 @@
+{
+	"info": {
+		"_postman_id": "e7f0a396-42d6-4899-a2b0-a46af6beaab2",
+		"name": "Transcription API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31975349",
+		"_collection_link": "https://www.postman.com/ruxailab/workspace/ruxailab-workspace/collection/31975349-e7f0a396-42d6-4899-a2b0-a46af6beaab2?action=share&source=collection_link&creator=31975349"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"item": [
+				{
+					"name": "/health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/health",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 10 Jun 2025 14:43:15 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "46"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\",\n    \"message\": \"Service is running\"\n}"
+						},
+						{
+							"name": "500 Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/health",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 10 Jun 2025 14:42:43 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "103"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Something went wrong on our side. Please try again later.\",\n    \"details\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transcription",
+			"item": [
+				{
+					"name": "/transcribe [Whisper]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"audio_url\":\"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"provider\":\"whisper\",\n    \"model\":\"tiny\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/transcribe",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transcribe"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK - Tiny Model",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"audio_url\":\"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"provider\":\"whisper\",\n    \"model\":\"tiny\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 10 Jun 2025 20:04:21 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "9434"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"provider\": \"whisper\",\n    \"model\": \"tiny\",\n    \"audio_url\": \"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"transcript\": \" The Volvo XC60 Discover more on VolvoCars.co.uk With every Starbucks order, you're not just getting a cup of coffee. You're helping support farmers who grow coffee across the globe. Show yourself some love with love honey From luxury accessories, soothing massage oils and carefully crafted gifts. This bundle is designed to enhance your personal pleasure. Start your adoption journey today with a dot south. You could be a forever family to a child who needs love and stability for life. If you have an urgent medical problem, you can visit 111.nhs.uk or call 111. Look after yourself and get the right care in the right place. The body shop sell is on from nourishing skincare to trendy makeup. Five fragrances to pampering body care. Sponsored child with world vision and see a child's life change before your eyes. Become a child's sponsor this Christmas. Such world vision today. The new world is a world that is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful.\",\n    \"language\": \"en\",\n    \"segments\": [\n        {\n            \"id\": 0,\n            \"seek\": 0,\n            \"start\": 0,\n            \"end\": 6,\n            \"text\": \" The Volvo XC60 Discover more on VolvoCars.co.uk\",\n            \"tokens\": [\n                50364,\n                440,\n                43381,\n                1783,\n                34,\n                4550,\n                40386,\n                544,\n                322,\n                43381,\n                34,\n                685,\n                13,\n                1291,\n                13,\n                2034,\n                50664\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 1,\n            \"seek\": 0,\n            \"start\": 6,\n            \"end\": 10,\n            \"text\": \" With every Starbucks order, you're not just getting a cup of coffee.\",\n            \"tokens\": [\n                50664,\n                2022,\n                633,\n                26303,\n                1668,\n                11,\n                291,\n                434,\n                406,\n                445,\n                1242,\n                257,\n                4414,\n                295,\n                4982,\n                13,\n                50864\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 2,\n            \"seek\": 0,\n            \"start\": 10,\n            \"end\": 14,\n            \"text\": \" You're helping support farmers who grow coffee across the globe.\",\n            \"tokens\": [\n                50864,\n                509,\n                434,\n                4315,\n                1406,\n                11339,\n                567,\n                1852,\n                4982,\n                2108,\n                264,\n                15371,\n                13,\n                51064\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 3,\n            \"seek\": 0,\n            \"start\": 14,\n            \"end\": 17,\n            \"text\": \" Show yourself some love with love honey\",\n            \"tokens\": [\n                51064,\n                6895,\n                1803,\n                512,\n                959,\n                365,\n                959,\n                8330,\n                51214\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 4,\n            \"seek\": 0,\n            \"start\": 17,\n            \"end\": 22,\n            \"text\": \" From luxury accessories, soothing massage oils and carefully crafted gifts.\",\n            \"tokens\": [\n                51214,\n                3358,\n                15558,\n                18207,\n                11,\n                40704,\n                16145,\n                22177,\n                293,\n                7500,\n                36213,\n                11449,\n                13,\n                51464\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 5,\n            \"seek\": 0,\n            \"start\": 22,\n            \"end\": 26,\n            \"text\": \" This bundle is designed to enhance your personal pleasure.\",\n            \"tokens\": [\n                51464,\n                639,\n                24438,\n                307,\n                4761,\n                281,\n                11985,\n                428,\n                2973,\n                6834,\n                13,\n                51664\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 6,\n            \"seek\": 0,\n            \"start\": 26,\n            \"end\": 29,\n            \"text\": \" Start your adoption journey today with a dot south.\",\n            \"tokens\": [\n                51664,\n                6481,\n                428,\n                19215,\n                4671,\n                965,\n                365,\n                257,\n                5893,\n                7377,\n                13,\n                51814\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 7,\n            \"seek\": 2900,\n            \"start\": 29,\n            \"end\": 33,\n            \"text\": \" You could be a forever family to a child who needs love and stability for life.\",\n            \"tokens\": [\n                50364,\n                509,\n                727,\n                312,\n                257,\n                5680,\n                1605,\n                281,\n                257,\n                1440,\n                567,\n                2203,\n                959,\n                293,\n                11826,\n                337,\n                993,\n                13,\n                50564\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 8,\n            \"seek\": 2900,\n            \"start\": 33,\n            \"end\": 39,\n            \"text\": \" If you have an urgent medical problem, you can visit 111.nhs.uk or call 111.\",\n            \"tokens\": [\n                50564,\n                759,\n                291,\n                362,\n                364,\n                19022,\n                4625,\n                1154,\n                11,\n                291,\n                393,\n                3441,\n                502,\n                5348,\n                13,\n                77,\n                71,\n                82,\n                13,\n                2034,\n                420,\n                818,\n                502,\n                5348,\n                13,\n                50864\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 9,\n            \"seek\": 2900,\n            \"start\": 39,\n            \"end\": 42,\n            \"text\": \" Look after yourself and get the right care in the right place.\",\n            \"tokens\": [\n                50864,\n                2053,\n                934,\n                1803,\n                293,\n                483,\n                264,\n                558,\n                1127,\n                294,\n                264,\n                558,\n                1081,\n                13,\n                51014\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 10,\n            \"seek\": 2900,\n            \"start\": 42,\n            \"end\": 46,\n            \"text\": \" The body shop sell is on from nourishing skincare to trendy makeup.\",\n            \"tokens\": [\n                51014,\n                440,\n                1772,\n                3945,\n                3607,\n                307,\n                322,\n                490,\n                22683,\n                3807,\n                29461,\n                281,\n                38596,\n                6567,\n                13,\n                51214\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 11,\n            \"seek\": 2900,\n            \"start\": 46,\n            \"end\": 48,\n            \"text\": \" Five fragrances to pampering body care.\",\n            \"tokens\": [\n                51214,\n                9436,\n                17599,\n                2676,\n                281,\n                30738,\n                20055,\n                1772,\n                1127,\n                13,\n                51314\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 12,\n            \"seek\": 2900,\n            \"start\": 48,\n            \"end\": 53,\n            \"text\": \" Sponsored child with world vision and see a child's life change before your eyes.\",\n            \"tokens\": [\n                51314,\n                1738,\n                892,\n                2769,\n                1440,\n                365,\n                1002,\n                5201,\n                293,\n                536,\n                257,\n                1440,\n                311,\n                993,\n                1319,\n                949,\n                428,\n                2575,\n                13,\n                51564\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 13,\n            \"seek\": 2900,\n            \"start\": 53,\n            \"end\": 56,\n            \"text\": \" Become a child's sponsor this Christmas.\",\n            \"tokens\": [\n                51564,\n                44308,\n                257,\n                1440,\n                311,\n                16198,\n                341,\n                5272,\n                13,\n                51714\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 14,\n            \"seek\": 2900,\n            \"start\": 56,\n            \"end\": 58,\n            \"text\": \" Such world vision today.\",\n            \"tokens\": [\n                51714,\n                9653,\n                1002,\n                5201,\n                965,\n                13,\n                51814\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 15,\n            \"seek\": 5900,\n            \"start\": 59,\n            \"end\": 62,\n            \"text\": \" The new world is a world that is very beautiful.\",\n            \"tokens\": [\n                50364,\n                440,\n                777,\n                1002,\n                307,\n                257,\n                1002,\n                300,\n                307,\n                588,\n                2238,\n                13,\n                50514\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 16,\n            \"seek\": 5900,\n            \"start\": 62,\n            \"end\": 64,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                50514,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                50614\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 17,\n            \"seek\": 5900,\n            \"start\": 64,\n            \"end\": 67,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                50614,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                50764\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 18,\n            \"seek\": 5900,\n            \"start\": 67,\n            \"end\": 69,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                50764,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                50864\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 19,\n            \"seek\": 5900,\n            \"start\": 69,\n            \"end\": 72,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                50864,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51014\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 20,\n            \"seek\": 5900,\n            \"start\": 72,\n            \"end\": 74,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51014,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51114\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 21,\n            \"seek\": 5900,\n            \"start\": 74,\n            \"end\": 77,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51114,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51264\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 22,\n            \"seek\": 5900,\n            \"start\": 77,\n            \"end\": 79,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51264,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51364\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 23,\n            \"seek\": 5900,\n            \"start\": 79,\n            \"end\": 81,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51364,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51464\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 24,\n            \"seek\": 5900,\n            \"start\": 81,\n            \"end\": 83,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51464,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51564\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 25,\n            \"seek\": 5900,\n            \"start\": 83,\n            \"end\": 85,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51564,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51664\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 26,\n            \"seek\": 5900,\n            \"start\": 85,\n            \"end\": 87,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51664,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51764\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        }\n    ]\n}"
+						},
+						{
+							"name": "422 Error - Missing Field",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"provider\":\"whisper\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 10 Jun 2025 20:04:21 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "9434"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"provider\": \"whisper\",\n    \"model\": \"tiny\",\n    \"audio_url\": \"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"transcript\": \" The Volvo XC60 Discover more on VolvoCars.co.uk With every Starbucks order, you're not just getting a cup of coffee. You're helping support farmers who grow coffee across the globe. Show yourself some love with love honey From luxury accessories, soothing massage oils and carefully crafted gifts. This bundle is designed to enhance your personal pleasure. Start your adoption journey today with a dot south. You could be a forever family to a child who needs love and stability for life. If you have an urgent medical problem, you can visit 111.nhs.uk or call 111. Look after yourself and get the right care in the right place. The body shop sell is on from nourishing skincare to trendy makeup. Five fragrances to pampering body care. Sponsored child with world vision and see a child's life change before your eyes. Become a child's sponsor this Christmas. Such world vision today. The new world is a world that is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful. The world is very beautiful.\",\n    \"language\": \"en\",\n    \"segments\": [\n        {\n            \"id\": 0,\n            \"seek\": 0,\n            \"start\": 0,\n            \"end\": 6,\n            \"text\": \" The Volvo XC60 Discover more on VolvoCars.co.uk\",\n            \"tokens\": [\n                50364,\n                440,\n                43381,\n                1783,\n                34,\n                4550,\n                40386,\n                544,\n                322,\n                43381,\n                34,\n                685,\n                13,\n                1291,\n                13,\n                2034,\n                50664\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 1,\n            \"seek\": 0,\n            \"start\": 6,\n            \"end\": 10,\n            \"text\": \" With every Starbucks order, you're not just getting a cup of coffee.\",\n            \"tokens\": [\n                50664,\n                2022,\n                633,\n                26303,\n                1668,\n                11,\n                291,\n                434,\n                406,\n                445,\n                1242,\n                257,\n                4414,\n                295,\n                4982,\n                13,\n                50864\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 2,\n            \"seek\": 0,\n            \"start\": 10,\n            \"end\": 14,\n            \"text\": \" You're helping support farmers who grow coffee across the globe.\",\n            \"tokens\": [\n                50864,\n                509,\n                434,\n                4315,\n                1406,\n                11339,\n                567,\n                1852,\n                4982,\n                2108,\n                264,\n                15371,\n                13,\n                51064\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 3,\n            \"seek\": 0,\n            \"start\": 14,\n            \"end\": 17,\n            \"text\": \" Show yourself some love with love honey\",\n            \"tokens\": [\n                51064,\n                6895,\n                1803,\n                512,\n                959,\n                365,\n                959,\n                8330,\n                51214\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 4,\n            \"seek\": 0,\n            \"start\": 17,\n            \"end\": 22,\n            \"text\": \" From luxury accessories, soothing massage oils and carefully crafted gifts.\",\n            \"tokens\": [\n                51214,\n                3358,\n                15558,\n                18207,\n                11,\n                40704,\n                16145,\n                22177,\n                293,\n                7500,\n                36213,\n                11449,\n                13,\n                51464\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 5,\n            \"seek\": 0,\n            \"start\": 22,\n            \"end\": 26,\n            \"text\": \" This bundle is designed to enhance your personal pleasure.\",\n            \"tokens\": [\n                51464,\n                639,\n                24438,\n                307,\n                4761,\n                281,\n                11985,\n                428,\n                2973,\n                6834,\n                13,\n                51664\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 6,\n            \"seek\": 0,\n            \"start\": 26,\n            \"end\": 29,\n            \"text\": \" Start your adoption journey today with a dot south.\",\n            \"tokens\": [\n                51664,\n                6481,\n                428,\n                19215,\n                4671,\n                965,\n                365,\n                257,\n                5893,\n                7377,\n                13,\n                51814\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18924886172579736,\n            \"compression_ratio\": 1.5055350553505535,\n            \"no_speech_prob\": 0.7145426273345947\n        },\n        {\n            \"id\": 7,\n            \"seek\": 2900,\n            \"start\": 29,\n            \"end\": 33,\n            \"text\": \" You could be a forever family to a child who needs love and stability for life.\",\n            \"tokens\": [\n                50364,\n                509,\n                727,\n                312,\n                257,\n                5680,\n                1605,\n                281,\n                257,\n                1440,\n                567,\n                2203,\n                959,\n                293,\n                11826,\n                337,\n                993,\n                13,\n                50564\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 8,\n            \"seek\": 2900,\n            \"start\": 33,\n            \"end\": 39,\n            \"text\": \" If you have an urgent medical problem, you can visit 111.nhs.uk or call 111.\",\n            \"tokens\": [\n                50564,\n                759,\n                291,\n                362,\n                364,\n                19022,\n                4625,\n                1154,\n                11,\n                291,\n                393,\n                3441,\n                502,\n                5348,\n                13,\n                77,\n                71,\n                82,\n                13,\n                2034,\n                420,\n                818,\n                502,\n                5348,\n                13,\n                50864\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 9,\n            \"seek\": 2900,\n            \"start\": 39,\n            \"end\": 42,\n            \"text\": \" Look after yourself and get the right care in the right place.\",\n            \"tokens\": [\n                50864,\n                2053,\n                934,\n                1803,\n                293,\n                483,\n                264,\n                558,\n                1127,\n                294,\n                264,\n                558,\n                1081,\n                13,\n                51014\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 10,\n            \"seek\": 2900,\n            \"start\": 42,\n            \"end\": 46,\n            \"text\": \" The body shop sell is on from nourishing skincare to trendy makeup.\",\n            \"tokens\": [\n                51014,\n                440,\n                1772,\n                3945,\n                3607,\n                307,\n                322,\n                490,\n                22683,\n                3807,\n                29461,\n                281,\n                38596,\n                6567,\n                13,\n                51214\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 11,\n            \"seek\": 2900,\n            \"start\": 46,\n            \"end\": 48,\n            \"text\": \" Five fragrances to pampering body care.\",\n            \"tokens\": [\n                51214,\n                9436,\n                17599,\n                2676,\n                281,\n                30738,\n                20055,\n                1772,\n                1127,\n                13,\n                51314\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 12,\n            \"seek\": 2900,\n            \"start\": 48,\n            \"end\": 53,\n            \"text\": \" Sponsored child with world vision and see a child's life change before your eyes.\",\n            \"tokens\": [\n                51314,\n                1738,\n                892,\n                2769,\n                1440,\n                365,\n                1002,\n                5201,\n                293,\n                536,\n                257,\n                1440,\n                311,\n                993,\n                1319,\n                949,\n                428,\n                2575,\n                13,\n                51564\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 13,\n            \"seek\": 2900,\n            \"start\": 53,\n            \"end\": 56,\n            \"text\": \" Become a child's sponsor this Christmas.\",\n            \"tokens\": [\n                51564,\n                44308,\n                257,\n                1440,\n                311,\n                16198,\n                341,\n                5272,\n                13,\n                51714\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 14,\n            \"seek\": 2900,\n            \"start\": 56,\n            \"end\": 58,\n            \"text\": \" Such world vision today.\",\n            \"tokens\": [\n                51714,\n                9653,\n                1002,\n                5201,\n                965,\n                13,\n                51814\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.19784759521484374,\n            \"compression_ratio\": 1.6550522648083623,\n            \"no_speech_prob\": 0.010640271939337254\n        },\n        {\n            \"id\": 15,\n            \"seek\": 5900,\n            \"start\": 59,\n            \"end\": 62,\n            \"text\": \" The new world is a world that is very beautiful.\",\n            \"tokens\": [\n                50364,\n                440,\n                777,\n                1002,\n                307,\n                257,\n                1002,\n                300,\n                307,\n                588,\n                2238,\n                13,\n                50514\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 16,\n            \"seek\": 5900,\n            \"start\": 62,\n            \"end\": 64,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                50514,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                50614\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 17,\n            \"seek\": 5900,\n            \"start\": 64,\n            \"end\": 67,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                50614,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                50764\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 18,\n            \"seek\": 5900,\n            \"start\": 67,\n            \"end\": 69,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                50764,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                50864\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 19,\n            \"seek\": 5900,\n            \"start\": 69,\n            \"end\": 72,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                50864,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51014\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 20,\n            \"seek\": 5900,\n            \"start\": 72,\n            \"end\": 74,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51014,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51114\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 21,\n            \"seek\": 5900,\n            \"start\": 74,\n            \"end\": 77,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51114,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51264\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 22,\n            \"seek\": 5900,\n            \"start\": 77,\n            \"end\": 79,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51264,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51364\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 23,\n            \"seek\": 5900,\n            \"start\": 79,\n            \"end\": 81,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51364,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51464\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 24,\n            \"seek\": 5900,\n            \"start\": 81,\n            \"end\": 83,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51464,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51564\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 25,\n            \"seek\": 5900,\n            \"start\": 83,\n            \"end\": 85,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51564,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51664\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        },\n        {\n            \"id\": 26,\n            \"seek\": 5900,\n            \"start\": 85,\n            \"end\": 87,\n            \"text\": \" The world is very beautiful.\",\n            \"tokens\": [\n                51664,\n                440,\n                1002,\n                307,\n                588,\n                2238,\n                13,\n                51764\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.5246304262031629,\n            \"compression_ratio\": 6.327586206896552,\n            \"no_speech_prob\": 0.8162857890129089\n        }\n    ]\n}"
+						},
+						{
+							"name": "422 Error - Invalid Model",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"audio_url\":\"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"provider\":\"whisper\",\n    \"model\":\"invalid\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 10 Jun 2025 20:07:57 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "158"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Some required fields are missing or invalid.\",\n    \"details\": \"body: Value error, Model 'invalid' is not valid for provider 'whisper'\"\n}"
+						},
+						{
+							"name": "422 Error - Invalid Audio URL",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"audio_url\":\"https://nonexistent.local/audio.mp4\",\n    \"provider\":\"whisper\",\n    \"model\":\"tiny\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 10 Jun 2025 20:07:07 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "313"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Failed to fetch audio: HTTPSConnectionPool(host='invalid-url.mp4', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\\\"<urllib3.connection.HTTPSConnection object at 0x1154769f0>: Failed to resolve 'invalid-url.mp4' ([Errno 8] nodename nor servname provided, or not known)\\\"))\"\n}"
+						},
+						{
+							"name": "422 Error - Unacessible  Audio",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"audio_url\":\"https://drive.google.com/file/d/1c6CGW5nFF7iReDhhHbVEBWlbSYeKk_Ds/view?usp=sharing\",\n    \"provider\":\"whisper\",\n    \"model\":\"tiny\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 19:08:38 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "158"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Failed to fetch audio: 401 Client Error: Unauthorized for url: https://drive.google.com/file/d/1c6CGW5nFF7iReDhhHbVEBWlbSYeKk_Ds/view?usp=sharing\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/transcribe [OpenAI]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"audio_url\":\"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"provider\":\"openai\",\n    \"model\":\"whisper-1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/transcribe",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transcribe"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 OK - Whisper-1 Model",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"audio_url\":\"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"provider\":\"openai\",\n    \"model\":\"whisper-1\"\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 17:18:13 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "5900"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"provider\": \"openai\",\n    \"model\": \"whisper-1\",\n    \"audio_url\": \"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"transcript\": \"The Volvo XC60. Discover more on volvocars.co.uk. With every Starbucks order, you're not just getting a cup of coffee, you're helping support farmers who grow coffee across the globe. Show yourself some love with Love Honey. From luxury accessories, soothing massage oils and carefully crafted gifts, this bundle is designed to enhance your personal pleasure. Start your adoption journey today with Adopt South. You could be a forever family to a child who needs love and stability for life. If you have an urgent medical problem, you can visit 111.nhs.uk or call 111. Look after yourself and get the right care in the right place. The Body Shop sale is on! From nourishing skincare to trendy makeup, fine fragrances to pampering body care. Sponsor a child with World Vision and see a child's life change before your eyes. Become a child sponsor this Christmas. Search World Vision today. worldvision.org\",\n    \"language\": \"english\",\n    \"segments\": [\n        {\n            \"id\": 0,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"end\": 6,\n            \"no_speech_prob\": 0.6547600030899048,\n            \"seek\": 0,\n            \"start\": 0,\n            \"temperature\": 0,\n            \"text\": \" The Volvo XC60. Discover more on volvocars.co.uk.\",\n            \"tokens\": [\n                50364,\n                440,\n                43381,\n                1783,\n                34,\n                4550,\n                13,\n                40386,\n                544,\n                322,\n                1996,\n                20836,\n                685,\n                13,\n                1291,\n                13,\n                2034,\n                13,\n                50664\n            ]\n        },\n        {\n            \"id\": 1,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"end\": 10,\n            \"no_speech_prob\": 0.6547600030899048,\n            \"seek\": 0,\n            \"start\": 6,\n            \"temperature\": 0,\n            \"text\": \" With every Starbucks order, you're not just getting a cup of coffee,\",\n            \"tokens\": [\n                50664,\n                2022,\n                633,\n                26303,\n                1668,\n                11,\n                291,\n                434,\n                406,\n                445,\n                1242,\n                257,\n                4414,\n                295,\n                4982,\n                11,\n                50864\n            ]\n        },\n        {\n            \"id\": 2,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"end\": 14,\n            \"no_speech_prob\": 0.6547600030899048,\n            \"seek\": 0,\n            \"start\": 10,\n            \"temperature\": 0,\n            \"text\": \" you're helping support farmers who grow coffee across the globe.\",\n            \"tokens\": [\n                50864,\n                291,\n                434,\n                4315,\n                1406,\n                11339,\n                567,\n                1852,\n                4982,\n                2108,\n                264,\n                15371,\n                13,\n                51064\n            ]\n        },\n        {\n            \"id\": 3,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"end\": 17,\n            \"no_speech_prob\": 0.6547600030899048,\n            \"seek\": 0,\n            \"start\": 14,\n            \"temperature\": 0,\n            \"text\": \" Show yourself some love with Love Honey.\",\n            \"tokens\": [\n                51064,\n                6895,\n                1803,\n                512,\n                959,\n                365,\n                5956,\n                16187,\n                13,\n                51214\n            ]\n        },\n        {\n            \"id\": 4,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"end\": 22,\n            \"no_speech_prob\": 0.6547600030899048,\n            \"seek\": 0,\n            \"start\": 17,\n            \"temperature\": 0,\n            \"text\": \" From luxury accessories, soothing massage oils and carefully crafted gifts,\",\n            \"tokens\": [\n                51214,\n                3358,\n                15558,\n                18207,\n                11,\n                40704,\n                16145,\n                22177,\n                293,\n                7500,\n                36213,\n                11449,\n                11,\n                51464\n            ]\n        },\n        {\n            \"id\": 5,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"end\": 26,\n            \"no_speech_prob\": 0.6547600030899048,\n            \"seek\": 0,\n            \"start\": 22,\n            \"temperature\": 0,\n            \"text\": \" this bundle is designed to enhance your personal pleasure.\",\n            \"tokens\": [\n                51464,\n                341,\n                24438,\n                307,\n                4761,\n                281,\n                11985,\n                428,\n                2973,\n                6834,\n                13,\n                51664\n            ]\n        },\n        {\n            \"id\": 6,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"end\": 29,\n            \"no_speech_prob\": 0.6547600030899048,\n            \"seek\": 0,\n            \"start\": 26,\n            \"temperature\": 0,\n            \"text\": \" Start your adoption journey today with Adopt South.\",\n            \"tokens\": [\n                51664,\n                6481,\n                428,\n                19215,\n                4671,\n                965,\n                365,\n                1999,\n                5747,\n                4242,\n                13,\n                51814\n            ]\n        },\n        {\n            \"id\": 7,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"end\": 33,\n            \"no_speech_prob\": 0.0015240495558828115,\n            \"seek\": 2900,\n            \"start\": 29,\n            \"temperature\": 0,\n            \"text\": \" You could be a forever family to a child who needs love and stability for life.\",\n            \"tokens\": [\n                50364,\n                509,\n                727,\n                312,\n                257,\n                5680,\n                1605,\n                281,\n                257,\n                1440,\n                567,\n                2203,\n                959,\n                293,\n                11826,\n                337,\n                993,\n                13,\n                50564\n            ]\n        },\n        {\n            \"id\": 8,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"end\": 39,\n            \"no_speech_prob\": 0.0015240495558828115,\n            \"seek\": 2900,\n            \"start\": 33,\n            \"temperature\": 0,\n            \"text\": \" If you have an urgent medical problem, you can visit 111.nhs.uk or call 111.\",\n            \"tokens\": [\n                50564,\n                759,\n                291,\n                362,\n                364,\n                19022,\n                4625,\n                1154,\n                11,\n                291,\n                393,\n                3441,\n                2975,\n                16,\n                13,\n                5728,\n                82,\n                13,\n                2034,\n                420,\n                818,\n                2975,\n                16,\n                13,\n                50864\n            ]\n        },\n        {\n            \"id\": 9,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"end\": 42,\n            \"no_speech_prob\": 0.0015240495558828115,\n            \"seek\": 2900,\n            \"start\": 39,\n            \"temperature\": 0,\n            \"text\": \" Look after yourself and get the right care in the right place.\",\n            \"tokens\": [\n                50864,\n                2053,\n                934,\n                1803,\n                293,\n                483,\n                264,\n                558,\n                1127,\n                294,\n                264,\n                558,\n                1081,\n                13,\n                51014\n            ]\n        },\n        {\n            \"id\": 10,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"end\": 44,\n            \"no_speech_prob\": 0.0015240495558828115,\n            \"seek\": 2900,\n            \"start\": 42,\n            \"temperature\": 0,\n            \"text\": \" The Body Shop sale is on!\",\n            \"tokens\": [\n                51014,\n                440,\n                21329,\n                16319,\n                8680,\n                307,\n                322,\n                0,\n                51114\n            ]\n        },\n        {\n            \"id\": 11,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"end\": 48,\n            \"no_speech_prob\": 0.0015240495558828115,\n            \"seek\": 2900,\n            \"start\": 44,\n            \"temperature\": 0,\n            \"text\": \" From nourishing skincare to trendy makeup, fine fragrances to pampering body care.\",\n            \"tokens\": [\n                51114,\n                3358,\n                22683,\n                3807,\n                29461,\n                281,\n                38596,\n                6567,\n                11,\n                2489,\n                17599,\n                2676,\n                281,\n                30738,\n                20055,\n                1772,\n                1127,\n                13,\n                51314\n            ]\n        },\n        {\n            \"id\": 12,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"end\": 53,\n            \"no_speech_prob\": 0.0015240495558828115,\n            \"seek\": 2900,\n            \"start\": 48,\n            \"temperature\": 0,\n            \"text\": \" Sponsor a child with World Vision and see a child's life change before your eyes.\",\n            \"tokens\": [\n                51314,\n                1738,\n                892,\n                284,\n                257,\n                1440,\n                365,\n                3937,\n                25170,\n                293,\n                536,\n                257,\n                1440,\n                311,\n                993,\n                1319,\n                949,\n                428,\n                2575,\n                13,\n                51564\n            ]\n        },\n        {\n            \"id\": 13,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"end\": 58,\n            \"no_speech_prob\": 0.0015240495558828115,\n            \"seek\": 2900,\n            \"start\": 53,\n            \"temperature\": 0,\n            \"text\": \" Become a child sponsor this Christmas. Search World Vision today.\",\n            \"tokens\": [\n                51564,\n                44308,\n                257,\n                1440,\n                16198,\n                341,\n                5272,\n                13,\n                17180,\n                3937,\n                25170,\n                965,\n                13,\n                51814\n            ]\n        },\n        {\n            \"id\": 14,\n            \"avg_logprob\": -0.6884907484054565,\n            \"compression_ratio\": 0.6521739363670349,\n            \"end\": 61,\n            \"no_speech_prob\": 0.9928913116455078,\n            \"seek\": 5900,\n            \"start\": 59,\n            \"temperature\": 0,\n            \"text\": \" worldvision.org\",\n            \"tokens\": [\n                50364,\n                1002,\n                6763,\n                13,\n                4646,\n                50464\n            ]\n        }\n    ]\n}"
+						},
+						{
+							"name": "422 Error - Missing Field",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"provider\":\"openai\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 18:36:33 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "121"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Some required fields are missing or invalid.\",\n    \"details\": \"body -> audio_url: Field required\"\n}"
+						},
+						{
+							"name": "422 Error - Invalid Model to Provider",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"audio_url\":\"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"provider\":\"openai\",\n    \"model\":\"mymodel\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 18:37:21 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "157"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Some required fields are missing or invalid.\",\n    \"details\": \"body: Value error, Model 'mymodel' is not valid for provider 'openai'\"\n}"
+						},
+						{
+							"name": "422 Error - Invalid Audio URL",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"audio_url\":\"https://nonexistent.local/audio.mp4\",\n    \"provider\":\"openai\",\n    \"model\":\"whisper-1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 10 Jun 2025 20:07:07 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "313"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Failed to fetch audio: HTTPSConnectionPool(host='invalid-url.mp4', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\\\"<urllib3.connection.HTTPSConnection object at 0x1154769f0>: Failed to resolve 'invalid-url.mp4' ([Errno 8] nodename nor servname provided, or not known)\\\"))\"\n}"
+						},
+						{
+							"name": "422 Error - Unacessible  Audio Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"audio_url\":\"https://drive.google.com/file/d/1c6CGW5nFF7iReDhhHbVEBWlbSYeKk_Ds/view?usp=sharing\",\n    \"provider\":\"openai\",\n    \"model\":\"whisper-1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 08 Jul 2025 19:08:38 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "158"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Failed to fetch audio: 401 Client Error: Unauthorized for url: https://drive.google.com/file/d/1c6CGW5nFF7iReDhhHbVEBWlbSYeKk_Ds/view?usp=sharing\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/transcribe [Invalid Provider]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"audio_url\":\"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"provider\":\"whisper\",\n    \"model\":\"tiny\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/transcribe",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transcribe"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "422 Error - Invalid Provider",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"audio_url\":\"https://thevoiceovervoice.co.uk/wp-content/uploads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3\",\n    \"provider\":\"invalid\",\n    \"model\":\"whisper-1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transcribe",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transcribe"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 10 Jun 2025 20:38:01 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "143"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Some required fields are missing or invalid.\",\n    \"details\": \"body -> provider: Input should be 'whisper' or 'openai'\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "OpenAI",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <API KEY>"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/basma/Downloads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3"
+						},
+						{
+							"key": "model",
+							"value": "whisper-1",
+							"type": "text"
+						},
+						{
+							"key": "response_format",
+							"value": "verbose_json",
+							"type": "text"
+						},
+						{
+							"key": "timestamp_granularities",
+							"value": "[\"segment\"]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.openai.com/v1/audio/transcriptions",
+					"protocol": "https",
+					"host": [
+						"api",
+						"openai",
+						"com"
+					],
+					"path": [
+						"v1",
+						"audio",
+						"transcriptions"
+					]
+				},
+				"description": "Generated from cURL: curl https://api.openai.com/v1/audio/transcriptions \\\n  -H \"Authorization: Bearer $OPENAI_API_KEY\" \\\n  -H \"Content-Type: multipart/form-data\" \\\n  -F file=\"@/path/to/file/audio.mp3\" \\\n  -F model=\"gpt-4o-transcribe\"\n"
+			},
+			"response": [
+				{
+					"name": "whisper-1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <API KEY>"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/basma/Downloads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3"
+								},
+								{
+									"key": "model",
+									"value": "whisper-1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/audio/transcriptions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"audio",
+								"transcriptions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 08 Jul 2025 17:00:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "X-Request-ID"
+						},
+						{
+							"key": "openai-organization",
+							"value": "ruxailab-dev"
+						},
+						{
+							"key": "openai-processing-ms",
+							"value": "3668"
+						},
+						{
+							"key": "openai-version",
+							"value": "2020-10-01"
+						},
+						{
+							"key": "strict-transport-security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						},
+						{
+							"key": "via",
+							"value": "envoy-router-584db67869-d7pvz"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "3671"
+						},
+						{
+							"key": "x-ratelimit-limit-requests",
+							"value": "500"
+						},
+						{
+							"key": "x-ratelimit-remaining-requests",
+							"value": "499"
+						},
+						{
+							"key": "x-ratelimit-reset-requests",
+							"value": "120ms"
+						},
+						{
+							"key": "x-request-id",
+							"value": "req_f5baa3dee32c8eed8415392bf7b37ef9"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "95c122ba2efde18f-MRS"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"text\": \"The Volvo XC60. Discover more on volvocars.co.uk. With every Starbucks order, you're not just getting a cup of coffee, you're helping support farmers who grow coffee across the globe. Show yourself some love with Love Honey. From luxury accessories, soothing massage oils and carefully crafted gifts, this bundle is designed to enhance your personal pleasure. Start your adoption journey today with Adopt South. You could be a forever family to a child who needs love and stability for life. If you have an urgent medical problem, you can visit 111.nhs.uk or call 111. Look after yourself and get the right care in the right place. The Body Shop sale is on! From nourishing skincare to trendy makeup, fine fragrances to pampering body care. Sponsor a child with World Vision and see a child's life change before your eyes. Become a child sponsor this Christmas. Search World Vision today. worldvision.org\",\n    \"usage\": {\n        \"type\": \"duration\",\n        \"seconds\": 60\n    }\n}"
+				},
+				{
+					"name": "whisper-1 (verbose_json)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <API KEY>"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/basma/Downloads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3"
+								},
+								{
+									"key": "model",
+									"value": "whisper-1",
+									"type": "text"
+								},
+								{
+									"key": "response_format",
+									"value": "verbose_json",
+									"type": "text"
+								},
+								{
+									"key": "timestamp_granularities",
+									"value": "[\"segment\"]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/audio/transcriptions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"audio",
+								"transcriptions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 08 Jul 2025 18:45:52 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "X-Request-ID"
+						},
+						{
+							"key": "openai-organization",
+							"value": "ruxailab-dev"
+						},
+						{
+							"key": "openai-processing-ms",
+							"value": "3765"
+						},
+						{
+							"key": "openai-version",
+							"value": "2020-10-01"
+						},
+						{
+							"key": "strict-transport-security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						},
+						{
+							"key": "via",
+							"value": "envoy-router-98dcf5b5f-2c8rm"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "4617"
+						},
+						{
+							"key": "x-ratelimit-limit-requests",
+							"value": "500"
+						},
+						{
+							"key": "x-ratelimit-remaining-requests",
+							"value": "499"
+						},
+						{
+							"key": "x-ratelimit-reset-requests",
+							"value": "120ms"
+						},
+						{
+							"key": "x-request-id",
+							"value": "req_eda768786c73b583e63986fca16eaa31"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "95c1bd710f96e22c-MRS"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"task\": \"transcribe\",\n    \"language\": \"english\",\n    \"duration\": 59.060001373291016,\n    \"text\": \"The Volvo XC60. Discover more on volvocars.co.uk. With every Starbucks order, you're not just getting a cup of coffee, you're helping support farmers who grow coffee across the globe. Show yourself some love with Love Honey. From luxury accessories, soothing massage oils and carefully crafted gifts, this bundle is designed to enhance your personal pleasure. Start your adoption journey today with Adopt South. You could be a forever family to a child who needs love and stability for life. If you have an urgent medical problem, you can visit 111.nhs.uk or call 111. Look after yourself and get the right care in the right place. The Body Shop sale is on! From nourishing skincare to trendy makeup, fine fragrances to pampering body care. Sponsor a child with World Vision and see a child's life change before your eyes. Become a child sponsor this Christmas. Search World Vision today. worldvision.org\",\n    \"segments\": [\n        {\n            \"id\": 0,\n            \"seek\": 0,\n            \"start\": 0,\n            \"end\": 6,\n            \"text\": \" The Volvo XC60. Discover more on volvocars.co.uk.\",\n            \"tokens\": [\n                50364,\n                440,\n                43381,\n                1783,\n                34,\n                4550,\n                13,\n                40386,\n                544,\n                322,\n                1996,\n                20836,\n                685,\n                13,\n                1291,\n                13,\n                2034,\n                13,\n                50664\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"no_speech_prob\": 0.6547600030899048\n        },\n        {\n            \"id\": 1,\n            \"seek\": 0,\n            \"start\": 6,\n            \"end\": 10,\n            \"text\": \" With every Starbucks order, you're not just getting a cup of coffee,\",\n            \"tokens\": [\n                50664,\n                2022,\n                633,\n                26303,\n                1668,\n                11,\n                291,\n                434,\n                406,\n                445,\n                1242,\n                257,\n                4414,\n                295,\n                4982,\n                11,\n                50864\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"no_speech_prob\": 0.6547600030899048\n        },\n        {\n            \"id\": 2,\n            \"seek\": 0,\n            \"start\": 10,\n            \"end\": 14,\n            \"text\": \" you're helping support farmers who grow coffee across the globe.\",\n            \"tokens\": [\n                50864,\n                291,\n                434,\n                4315,\n                1406,\n                11339,\n                567,\n                1852,\n                4982,\n                2108,\n                264,\n                15371,\n                13,\n                51064\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"no_speech_prob\": 0.6547600030899048\n        },\n        {\n            \"id\": 3,\n            \"seek\": 0,\n            \"start\": 14,\n            \"end\": 17,\n            \"text\": \" Show yourself some love with Love Honey.\",\n            \"tokens\": [\n                51064,\n                6895,\n                1803,\n                512,\n                959,\n                365,\n                5956,\n                16187,\n                13,\n                51214\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"no_speech_prob\": 0.6547600030899048\n        },\n        {\n            \"id\": 4,\n            \"seek\": 0,\n            \"start\": 17,\n            \"end\": 22,\n            \"text\": \" From luxury accessories, soothing massage oils and carefully crafted gifts,\",\n            \"tokens\": [\n                51214,\n                3358,\n                15558,\n                18207,\n                11,\n                40704,\n                16145,\n                22177,\n                293,\n                7500,\n                36213,\n                11449,\n                11,\n                51464\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"no_speech_prob\": 0.6547600030899048\n        },\n        {\n            \"id\": 5,\n            \"seek\": 0,\n            \"start\": 22,\n            \"end\": 26,\n            \"text\": \" this bundle is designed to enhance your personal pleasure.\",\n            \"tokens\": [\n                51464,\n                341,\n                24438,\n                307,\n                4761,\n                281,\n                11985,\n                428,\n                2973,\n                6834,\n                13,\n                51664\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"no_speech_prob\": 0.6547600030899048\n        },\n        {\n            \"id\": 6,\n            \"seek\": 0,\n            \"start\": 26,\n            \"end\": 29,\n            \"text\": \" Start your adoption journey today with Adopt South.\",\n            \"tokens\": [\n                51664,\n                6481,\n                428,\n                19215,\n                4671,\n                965,\n                365,\n                1999,\n                5747,\n                4242,\n                13,\n                51814\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.22609375417232513,\n            \"compression_ratio\": 1.5,\n            \"no_speech_prob\": 0.6547600030899048\n        },\n        {\n            \"id\": 7,\n            \"seek\": 2900,\n            \"start\": 29,\n            \"end\": 33,\n            \"text\": \" You could be a forever family to a child who needs love and stability for life.\",\n            \"tokens\": [\n                50364,\n                509,\n                727,\n                312,\n                257,\n                5680,\n                1605,\n                281,\n                257,\n                1440,\n                567,\n                2203,\n                959,\n                293,\n                11826,\n                337,\n                993,\n                13,\n                50564\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"no_speech_prob\": 0.0015240495558828115\n        },\n        {\n            \"id\": 8,\n            \"seek\": 2900,\n            \"start\": 33,\n            \"end\": 39,\n            \"text\": \" If you have an urgent medical problem, you can visit 111.nhs.uk or call 111.\",\n            \"tokens\": [\n                50564,\n                759,\n                291,\n                362,\n                364,\n                19022,\n                4625,\n                1154,\n                11,\n                291,\n                393,\n                3441,\n                2975,\n                16,\n                13,\n                5728,\n                82,\n                13,\n                2034,\n                420,\n                818,\n                2975,\n                16,\n                13,\n                50864\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"no_speech_prob\": 0.0015240495558828115\n        },\n        {\n            \"id\": 9,\n            \"seek\": 2900,\n            \"start\": 39,\n            \"end\": 42,\n            \"text\": \" Look after yourself and get the right care in the right place.\",\n            \"tokens\": [\n                50864,\n                2053,\n                934,\n                1803,\n                293,\n                483,\n                264,\n                558,\n                1127,\n                294,\n                264,\n                558,\n                1081,\n                13,\n                51014\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"no_speech_prob\": 0.0015240495558828115\n        },\n        {\n            \"id\": 10,\n            \"seek\": 2900,\n            \"start\": 42,\n            \"end\": 44,\n            \"text\": \" The Body Shop sale is on!\",\n            \"tokens\": [\n                51014,\n                440,\n                21329,\n                16319,\n                8680,\n                307,\n                322,\n                0,\n                51114\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"no_speech_prob\": 0.0015240495558828115\n        },\n        {\n            \"id\": 11,\n            \"seek\": 2900,\n            \"start\": 44,\n            \"end\": 48,\n            \"text\": \" From nourishing skincare to trendy makeup, fine fragrances to pampering body care.\",\n            \"tokens\": [\n                51114,\n                3358,\n                22683,\n                3807,\n                29461,\n                281,\n                38596,\n                6567,\n                11,\n                2489,\n                17599,\n                2676,\n                281,\n                30738,\n                20055,\n                1772,\n                1127,\n                13,\n                51314\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"no_speech_prob\": 0.0015240495558828115\n        },\n        {\n            \"id\": 12,\n            \"seek\": 2900,\n            \"start\": 48,\n            \"end\": 53,\n            \"text\": \" Sponsor a child with World Vision and see a child's life change before your eyes.\",\n            \"tokens\": [\n                51314,\n                1738,\n                892,\n                284,\n                257,\n                1440,\n                365,\n                3937,\n                25170,\n                293,\n                536,\n                257,\n                1440,\n                311,\n                993,\n                1319,\n                949,\n                428,\n                2575,\n                13,\n                51564\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"no_speech_prob\": 0.0015240495558828115\n        },\n        {\n            \"id\": 13,\n            \"seek\": 2900,\n            \"start\": 53,\n            \"end\": 58,\n            \"text\": \" Become a child sponsor this Christmas. Search World Vision today.\",\n            \"tokens\": [\n                51564,\n                44308,\n                257,\n                1440,\n                16198,\n                341,\n                5272,\n                13,\n                17180,\n                3937,\n                25170,\n                965,\n                13,\n                51814\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.18421430885791779,\n            \"compression_ratio\": 1.6245733499526978,\n            \"no_speech_prob\": 0.0015240495558828115\n        },\n        {\n            \"id\": 14,\n            \"seek\": 5900,\n            \"start\": 59,\n            \"end\": 61,\n            \"text\": \" worldvision.org\",\n            \"tokens\": [\n                50364,\n                1002,\n                6763,\n                13,\n                4646,\n                50464\n            ],\n            \"temperature\": 0,\n            \"avg_logprob\": -0.6884907484054565,\n            \"compression_ratio\": 0.6521739363670349,\n            \"no_speech_prob\": 0.9928913116455078\n        }\n    ],\n    \"usage\": {\n        \"type\": \"duration\",\n        \"seconds\": 60\n    }\n}"
+				},
+				{
+					"name": "gpt-4o-mini-transcribe",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <API KEY>"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/basma/Downloads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3"
+								},
+								{
+									"key": "model",
+									"value": "gpt-4o-mini-transcribe",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/audio/transcriptions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"audio",
+								"transcriptions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 08 Jul 2025 18:39:03 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "X-Request-ID"
+						},
+						{
+							"key": "openai-organization",
+							"value": "ruxailab-dev"
+						},
+						{
+							"key": "openai-processing-ms",
+							"value": "1887"
+						},
+						{
+							"key": "openai-version",
+							"value": "2020-10-01"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "1883"
+						},
+						{
+							"key": "x-ratelimit-limit-requests",
+							"value": "10000"
+						},
+						{
+							"key": "x-ratelimit-remaining-requests",
+							"value": "9999"
+						},
+						{
+							"key": "x-ratelimit-reset-requests",
+							"value": "8.64s"
+						},
+						{
+							"key": "x-request-id",
+							"value": "req_32741bd8adc492b267e342a31bd74402"
+						},
+						{
+							"key": "strict-transport-security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "__cf_bm=tkREnojuR1cUp96h0263ag3QKe4QIS68kZpeCG9eBfA-1751999943-1.0.1.1-NZprTTcw5pl2CGrMi5B0ZvAT3OWPlK2PuUCHMeEQ3RxrXkgXA.OQvcWREmyZFoTb6D53WGpjkqxb_LyXF1e0MwNTPVjAmzoAfjV0CFC9ShU; path=/; expires=Tue, 08-Jul-25 19:09:03 GMT; domain=.api.openai.com; HttpOnly; Secure; SameSite=None"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "95c1b380fe0ae179-MRS"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"text\": \"The Volvo XC60. Discover more on volvocars.co.uk. With every Starbucks order, you're not just getting a cup of coffee. You're helping support farmers who grow coffee across the globe. Show yourself some love with Love Honey. From luxury accessories to soothing massage oils and carefully crafted gifts, this bundle is designed to enhance your personal pleasures. Start your adoption journey today with Adopt Self. You could be a forever family to a child who needs love and stability for life. If you have an urgent medical problem, you can visit 111.nhs.uk or call 111. Look after yourself and get the right care in the right place. The Body Shop sale is on! From nourishing skincare to trendy makeup, fine fragrances to pampering body care. Sponsor a child with World Vision and see a child's life change before your eyes. Become a child sponsor this Christmas. Search World Vision today.\",\n    \"usage\": {\n        \"type\": \"tokens\",\n        \"total_tokens\": 771,\n        \"input_tokens\": 590,\n        \"input_token_details\": {\n            \"text_tokens\": 0,\n            \"audio_tokens\": 590\n        },\n        \"output_tokens\": 181\n    }\n}"
+				},
+				{
+					"name": "gpt-4o-mini-transcribe (verbose_json)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <API KEY>"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/basma/Downloads/Posy-Brewer-Commercial-Showreel-2025_Final-1.mp3"
+								},
+								{
+									"key": "model",
+									"value": "gpt-4o-mini-transcribe",
+									"type": "text"
+								},
+								{
+									"key": "response_format",
+									"value": "verbose_json",
+									"type": "text"
+								},
+								{
+									"key": "timestamp_granularities",
+									"value": "[\"segment\"]",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.openai.com/v1/audio/transcriptions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"openai",
+								"com"
+							],
+							"path": [
+								"v1",
+								"audio",
+								"transcriptions"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 08 Jul 2025 18:47:00 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "263"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "X-Request-ID"
+						},
+						{
+							"key": "openai-organization",
+							"value": "ruxailab-dev"
+						},
+						{
+							"key": "openai-processing-ms",
+							"value": "62"
+						},
+						{
+							"key": "openai-version",
+							"value": "2020-10-01"
+						},
+						{
+							"key": "x-envoy-upstream-service-time",
+							"value": "56"
+						},
+						{
+							"key": "x-ratelimit-limit-requests",
+							"value": "10000"
+						},
+						{
+							"key": "x-ratelimit-remaining-requests",
+							"value": "9999"
+						},
+						{
+							"key": "x-ratelimit-reset-requests",
+							"value": "8.64s"
+						},
+						{
+							"key": "x-request-id",
+							"value": "req_0d181375926bde8407a3e8898258c6ee"
+						},
+						{
+							"key": "strict-transport-security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "95c1bf383850e18f-MRS"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": {\n        \"message\": \"response_format 'verbose_json' is not compatible with model 'gpt-4o-mini-transcribe-api-ev3'. Use 'json' or 'text' instead.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"response_format\",\n        \"code\": \"unsupported_value\"\n    }\n}"
+				}
+			]
+		}
+	]
+}
