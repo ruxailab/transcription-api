@@ -1,16 +1,27 @@
 import pytest
 from unittest.mock import patch, MagicMock
 from app.services.providers.whisper_local import WhisperLocalProvider
+from fastapi import HTTPException
+
+
+def test_whisper_provider_invalid_url_format():
+    provider = WhisperLocalProvider(model_size="tiny")
+
+    with pytest.raises(
+        ValueError,
+        match=r"Invalid URL format.",
+    ):
+        provider.transcribe("invalid")
 
 
 def test_whisper_provider_invalid_url():
     provider = WhisperLocalProvider(model_size="tiny")
 
     with pytest.raises(
-        RuntimeError,
-        match=r"Failed to load audio:.*",
+        HTTPException,
+        match=r"Failed to fetch audio:.*",
     ):
-        provider.transcribe("https://invalid-url.com/audio.mp3")
+        provider.transcribe("http://nonexistent.local/audio.mp3")
 
 
 @patch("app.services.providers.whisper_local.get_whisper_model")

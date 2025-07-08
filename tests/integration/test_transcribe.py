@@ -75,3 +75,37 @@ def test_transcribe_whisper_tiny_success():
         assert "start" in segment and isinstance(segment["start"], (int, float))
         assert "end" in segment and isinstance(segment["end"], (int, float))
         assert "text" in segment and isinstance(segment["text"], str)
+
+
+# # Uncomment this test if you have OpenAI API key configured (Takes Cost :D)
+# def test_transcribe_openai_whisper_1_success():
+#     response = client.post(
+#         "/api/v1/transcribe",
+#         json={
+#             "audio_url": "https://thevoiceovervoice.co.uk/wp-content/uploads/Posy_British-English_Trailer-Demo.mp3",
+#             "provider": "openai",
+#             "model": "whisper-1",  # OpenAI's Whisper model
+#         },
+#     )
+
+#     assert response.status_code == 200
+#     data = response.json()
+
+#     assert data["status"] == "success"
+#     assert data["provider"] == "openai"
+#     assert data["model"] == "whisper-1"
+#     assert (
+#         "transcript" in data
+#         and isinstance(data["transcript"], str)
+#         and len(data["transcript"]) > 0
+#     )
+
+#     # Validate language
+#     assert "language" in data and isinstance(data["language"], str)
+
+#     # Validate segments
+#     assert "segments" in data and isinstance(data["segments"], list)
+#     for segment in data["segments"]:
+#         assert "start" in segment and isinstance(segment["start"], (int, float))
+#         assert "end" in segment and isinstance(segment["end"], (int, float))
+#         assert "text" in segment and isinstance(segment["text"], str)
