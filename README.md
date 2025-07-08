@@ -38,6 +38,14 @@ pip install -r requirements.txt
 
 ---
 
+## 🌐 Postman Collection
+
+For testing the API endpoints, you can use the following Postman collection:
+
+- [RuxAiLab Transcription Tool APIs Postman Collection](https://www.postman.com/ruxailab/ruxailab-workspace/collection/slzg8if/transcription-api)
+
+---
+
 ## 🚀 Run the API Server
 
 ```bash
