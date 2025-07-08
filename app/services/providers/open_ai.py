@@ -1,4 +1,4 @@
-from openai import OpenAI
+from openai import OpenAI, OpenAIError
 import requests
 import tempfile
 import os
@@ -38,7 +38,6 @@ class OpenAIProvider(BaseProvider):
             raise HTTPException(
                 status_code=422, detail=f"Failed to fetch audio: {str(e)}"
             )
-        
 
         # Write to temporary file
         with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as tmp:
@@ -54,7 +53,11 @@ class OpenAIProvider(BaseProvider):
                     response_format="verbose_json",
                     timestamp_granularities=["segment"],
                 ).model_dump()  # Convert to dict :D
-
+        except OpenAIError as e:
+            raise HTTPException(
+                status_code=503,
+                detail=f"OpenAI transcription service is currently unavailable: {str(e)}",
+            )
         finally:
             os.remove(tmp_path)  # Clean up manually
 

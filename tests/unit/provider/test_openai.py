@@ -25,6 +25,40 @@ def test_openai_provider_invalid_url():
         provider.transcribe("http://nonexistent.local/audio.mp3")
 
 
+from openai import APIConnectionError
+
+
+@patch.dict(os.environ, {"OPENAI_API_KEY": "fake-key"})
+@patch("app.services.providers.open_ai.OpenAI")
+@patch("app.services.providers.open_ai.requests.get")
+def test_openai_provider_server_unavailable(mock_requests_get, mock_openai_class):
+    # Fake audio content download
+    mock_requests_get.return_value.status_code = 200
+    mock_requests_get.return_value.content = b"fake-mp3-audio-bytes"
+
+    # Setup mock OpenAI client that raises APIConnectionError
+    mock_transcriptions = MagicMock()
+    mock_transcriptions.create.side_effect = APIConnectionError(
+        message="Server down", request=None
+    )
+
+    mock_audio = MagicMock()
+    mock_audio.transcriptions = mock_transcriptions
+
+    mock_client = MagicMock()
+    mock_client.audio = mock_audio
+
+    mock_openai_class.return_value = mock_client
+
+    provider = OpenAIProvider(model_name="whisper-1")
+
+    with pytest.raises(HTTPException) as exc_info:
+        provider.transcribe("https://example.com/audio.mp3")
+
+    assert exc_info.value.status_code == 503
+    assert "unavailable" in str(exc_info.value.detail).lower()
+
+
 @patch.dict(os.environ, {"OPENAI_API_KEY": "fake-key"})
 @patch("app.services.providers.open_ai.requests.get")
 @patch("app.services.providers.open_ai.OpenAI")

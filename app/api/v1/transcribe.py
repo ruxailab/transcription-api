@@ -57,6 +57,18 @@ router = APIRouter()
                 }
             },
         },
+        503: {
+            "model": ErrorResponse,
+            "description": "Service Unavailable",
+            "content": {
+                "application/json": {
+                    "example": {
+                        "status": "error",
+                        "message": "Transcription service is temporarily unavailable. Please try again later.",
+                    }
+                }
+            },
+        },
         500: {
             "model": ErrorResponse,
             "description": "Internal Server Error",
