@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
 
 # Schemas
 from fastapi.responses import JSONResponse
@@ -9,11 +10,24 @@ from app.schemas.common import ErrorResponse
 from app.api.v1 import health
 from app.api.v1 import transcribe
 
+
+from dotenv import load_dotenv
+
+load_dotenv()  # <-- This loads the environment variables from .env file
+
 # Initialize FastAPI application
 app = FastAPI(
     title="Transcription Backend",
     description="API for audio transcription and health monitoring",
     version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:8080"],  # or ["*"] for all origins during dev
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
