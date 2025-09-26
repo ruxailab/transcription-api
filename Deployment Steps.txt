@@ -1,0 +1,16 @@
+ 1008  IMAGE="transcription-api"
+ 1009  TAG="v1"\n
+ 1010  gcloud artifacts repositories create $REPO \\n  --repository-format=docker \\n  --location=$REGION\n
+ 1011  gcloud builds submit \\n  --tag $REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG \\n  .\n
+ 1012  PROJECT_ID="ruxailab-develop"\n
+ 1013  REGION="europe-west4" 
+ 1014  REPO="containers"\n
+ 1015  IMAGE="transcription-api"\n
+ 1016  TAG="gpu-v1"
+ 1017  gcloud artifacts repositories create $REPO \\n  --repository-format=docker \\n  --location=$REGION\n
+ 1018  # Build & push with Cloud Build\ngcloud builds submit \\n  --tag $REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG \\n  -f Dockerfile.gpu .\n
+ 1019  # Build & push with Cloud Build\ngcloud builds submit \\n  --tag $REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG \\n  -f Dockerfile.gpu .\n
+ 1020  gcloud builds submit \\n  --tag $REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG \\n  -f Dockerfile.gpu .\n
+ 1021  gcloud builds submit \\n  --tag $REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG
+ 1022  gcloud beta run deploy transcription-api-gpu \\n  --image $REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG \\n  --region $REGION \\n  --allow-unauthenticated \\n  --gpu 1 \\n  --gpu-type nvidia-l4 \\n  --cpu 4 \\n  --memory 16Gi \\n  --concurrency 1 \\n  --no-cpu-throttling \\n  --port 8000\n
+ 1023  history
