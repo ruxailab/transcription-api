@@ -87,8 +87,8 @@ You can use sample audio files from:
 
 **🔗** [https://thevoiceovervoice.co.uk/female-voice-over-samples/](https://thevoiceovervoice.co.uk/female-voice-over-samples/)
 
-
-## Deployment Guide
+---
+## 🛠️ Deployment Guide
 Deploy a Dockerized FastAPI service to Google Cloud Run with NVIDIA L4 GPUs. Images are stored in Artifact Registry and built with Cloud Build.
 
 ### Prerequisites
