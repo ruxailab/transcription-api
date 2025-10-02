@@ -18,8 +18,8 @@ pyenv local 3.12.3  # ensures 3.12.x is used in this directory
 ### 2. Create & Activate Virtual Environment
 
 ```bash
-python3.12 -m venv venv
-source venv/bin/activate
+python3.12 -m venv env
+source env/bin/activate
 ```
 
 ### 3. Install FFmpeg
