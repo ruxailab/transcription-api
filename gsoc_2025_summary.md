@@ -1,4 +1,4 @@
-# <img align="center" width="60px" src="https://en.opensuse.org/images/9/91/Gsocsun.png"> Google Summer of Code 2025 — Transcription Tool for Usability Testing
+# <img align="center" width="60px" src="https://en.opensuse.org/images/9/91/Gsocsun.png"> GSoC'25 — Transcription Tool for Usability Testing
 
 This repository and its companion front-end integration are part of the **Google Summer of Code (GSoC) 2025** program with **RUXAI Lab**.  
 The project focuses on building an **end-to-end Speech-to-Text (Transcription) Tool** — combining a scalable **FastAPI backend** with a **Vue-based RUXAILAB front-end integration** for managing audio transcription sessions.
