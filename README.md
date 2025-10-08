@@ -157,3 +157,21 @@ gcloud builds submit   --tag "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$T
 gcloud run deploy "transcription-api"   --image "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG"   --region "$REGION"   --allow-unauthenticated   --cpu 2   --memory 2Gi   --port 8000  --set-env-vars "DEVICE=cuda,OPENAI_API_KEY=YOUR_API_KEY_HERE"
 ```
 
+<!-- GSoC Docs -->
+## <img align="center" width="60px" src="https://en.opensuse.org/images/9/91/Gsocsun.png"> GSoC Docs <a id="gsoc"></a>
+This repository is part of the [Google Summer of Code (GSoC) 2025](https://summerofcode.withgoogle.com/) program.
+
+- **Contributor:** [Basma Elhoseny](https://github.com/basmaelhoseny01)
+- **Mentors:** [Karine](https://github.com/KarinePistili) - [Marc](https://github.com/marcgc21)
+
+> ### 🔗 Useful Links
+> - 🧠 **GSoC'25 Project Page:** [Transcription Tool for Usability Testing GSoC 25 Program](https://summerofcode.withgoogle.com/programs/2025/projects/aOHlFhUA)  
+> - 🧾 **Proof of Work:** [gsoc_2025_summary.md](https://github.com/ruxailab/transcription-api/blob/main/gsoc_2025_summary.md)
+
+<!-- License -->
+## <img align="center" height="60px" src="https://cdn-icons-png.freepik.com/512/1046/1046441.png"> License <a id="license"></a>
+This software is licensed under the MIT License. See the [LICENSE](https://github.com/ruxailab/transcription-api/blob/main/LICENSE) file for more information.
+<div align="center">
+    © 2025 RUXAILAB.
+</div>
+
