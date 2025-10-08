@@ -5,6 +5,9 @@ The project focuses on building an **end-to-end Speech-to-Text (Transcription) T
 
 ---
 
+## 🌐 Official GSoC Project Page
+🔗 [Google Summer of Code 2025 — Transcription Tool for Usability Testing](https://summerofcode.withgoogle.com/programs/2025/projects/aOHlFhUA)
+
 ## 👩‍💻 Contributor
 
 - **Basma Elhoseny**
@@ -18,8 +21,6 @@ The project focuses on building an **end-to-end Speech-to-Text (Transcription) T
 
 - [Karine Pistili](https://github.com/KarinePistili)
 - [Marc](https://github.com/marcgc21)
-
----
 
 ## 🧩 Project Overview
 
@@ -122,7 +123,7 @@ The project successfully delivered a **fully working transcription pipeline**:
 
 ### ✨ Acknowledgements
 
-Special thanks to my mentors **Karine**, **Marc**, **Vinícius**, and **Murilo** for their continuous support and guidance throughout the GSoC journey.
+Special thanks to my mentors **Karine** and **Marc** for their continuous support and guidance throughout the GSoC journey.
 
 ---
 
