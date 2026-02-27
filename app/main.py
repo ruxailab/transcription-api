@@ -72,6 +72,9 @@ async def internal_error_handler(request: Request, exc: Exception):
 
 app.include_router(health.router, prefix="/api/v1")
 app.include_router(transcribe.router, prefix="/api/v1")
+@app.get("/ping")
+async def ping():
+    return {"status": "ok"}
 
 
 # Example of how to access settings in the app
