@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+import logging
 
 # Schemas
 from fastapi.responses import JSONResponse
@@ -14,6 +15,10 @@ from app.api.v1 import transcribe
 from dotenv import load_dotenv
 
 load_dotenv()  # <-- This loads the environment variables from .env file
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+logger=logging.getLogger(__name__)
+
 
 # Initialize FastAPI application
 app = FastAPI(
@@ -33,7 +38,9 @@ app.add_middleware(
 
 @app.exception_handler(RequestValidationError)
 async def validation_error_handler(request: Request, exc: RequestValidationError):
-    print(f"[Validation Error] Path: {request.url.path} | Errors: {exc.errors()}")
+    logger.warning(
+        f"Validation Error | Path: {request.url.path} | Errors: {exc.errors()}"
+    )
 
     # Build user-friendly field-level messages
     field_errors = []
@@ -59,7 +66,9 @@ async def validation_error_handler(request: Request, exc: RequestValidationError
 @app.exception_handler(Exception)
 async def internal_error_handler(request: Request, exc: Exception):
     # Optional: log the full traceback for debugging
-    print(f"[Internal Error] Path: {request.url.path} | Exception: {exc}")
+    logger.error(
+        f"Internal Error | Path: {request.url.path} | Exception: {exc}"
+    )
 
     return JSONResponse(
         status_code=500,
