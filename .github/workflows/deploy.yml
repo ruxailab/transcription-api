@@ -1,8 +1,8 @@
 # Deploy Transcription API to Cloud Run (CPU-only).
 #
 # Required GitHub Secrets:
-#   - GCP_SA_KEY: JSON key for a GCP service account with Cloud Build,
-#     Artifact Registry Writer, Cloud Run Admin, and Service Account User roles
+#   - GCP_SA_KEY: JSON key for a GCP service account with Artifact Registry
+#     Writer, Cloud Run Admin, and Service Account User roles
 #   - OPENAI_API_KEY: injected into the Cloud Run service as an env var
 
 name: Deploy to Cloud Run
@@ -38,12 +38,16 @@ jobs:
         with:
           project_id: ${{ env.PROJECT_ID }}
 
+      - name: Authenticate Docker to Artifact Registry
+        run: gcloud auth configure-docker "${REGION}-docker.pkg.dev" --quiet
+
       - name: Build and push image
         run: |
           TAG="sha-${GITHUB_SHA::7}"
           IMAGE_URI="${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/${IMAGE}:${TAG}"
           echo "IMAGE_URI=${IMAGE_URI}" >> "$GITHUB_ENV"
-          gcloud builds submit --tag "${IMAGE_URI}" .
+          docker build -t "${IMAGE_URI}" .
+          docker push "${IMAGE_URI}"
 
       - name: Deploy to Cloud Run
         env:
