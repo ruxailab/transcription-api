@@ -5,10 +5,7 @@ from typing import Optional
 
 class TranscriptionModel(str, Enum):
     # Local Whisper models
-    tiny = "tiny"
-    base = "base"
     medium = "medium"
-    large = "large"
     # OpenAI models for transcription
     whisper_1 = "whisper-1"
 
@@ -26,10 +23,10 @@ class TranscribeRequest(BaseModel):
         description=(
             "Name of the transcription model to use.\n\n"
             "🧠 **Available models by provider:**\n"
-            "- `whisper`: `tiny`, `base`, `medium`, `large`\n"
+            "- `whisper`: `medium`\n"
             "- `openai`: `whisper-1`"
         ),
-        json_schema_extra={"example": "tiny"},
+        json_schema_extra={"example": "medium"},
     )
 
     @model_validator(mode="before")
@@ -41,7 +38,7 @@ class TranscribeRequest(BaseModel):
             return values  # No model specified, skip validation
 
         # Define model compatibility per provider
-        whisper_models = {"tiny", "base", "medium", "large"}
+        whisper_models = {"medium"}
         openai_models = {"whisper-1", "gpt_4o_transcribe", "gpt_4o_mini_transcribe"}
 
         if provider == TranscriptionProvider.whisper and model not in whisper_models:
@@ -64,10 +61,10 @@ class TranscribeResponse(BaseModel):
         description=(
             "Name of the transcription model used.\n\n"
             "🧠 **Available models by provider:**\n"
-            "- `whisper`: `tiny`, `base`, `medium`, `large`\n"
+            "- `whisper`: `medium`\n"
             "- `openai`: `whisper-1`"
         ),
-        json_schema_extra={"example": "tiny"},
+        json_schema_extra={"example": "medium"},
     )
     audio_url: HttpUrl = Field(
         ..., json_schema_extra={"example": "https://example.com/audio.mp3"}

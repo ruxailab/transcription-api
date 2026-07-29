@@ -11,7 +11,7 @@ from app.core.config import settings
 from app.services.providers.base import BaseProvider
 
 
-@lru_cache(maxsize=4)  # Cache up to 4 model sizes: "tiny", "base", "medium", "large"
+@lru_cache(maxsize=1)  # Cache the "medium" model
 def get_whisper_model(model_size: str):
     print(f"🔁 Loading Whisper model: {model_size} to {settings.device}")
     return whisper.load_model(model_size).to(settings.device)
@@ -21,7 +21,7 @@ class WhisperLocalProvider(BaseProvider):
     def __init__(self, model_size: str):
         """
         Initialize the WhisperLocalProvider with a specific model size.
-        :param model_size: Size of the Whisper model to load (e.g., "tiny", "base", "medium", "large").
+        :param model_size: Size of the Whisper model to load (e.g., "medium").
         """
         print(f"⚙️ Instantiating WhisperLocalProvider with: {model_size}")
         self.model = get_whisper_model(model_size)

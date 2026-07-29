@@ -41,7 +41,7 @@ def test_transcribe_route_invalid_url():
         json={
             "audio_url": "not-a-valid-url",
             "provider": "whisper",
-            "model": "tiny",
+            "model": "medium",
         },
     )
     assert response.status_code == 422  # Pydantic will reject invalid HttpUrl
@@ -53,7 +53,7 @@ def test_transcribe_route_invalid_url():
 def test_transcribe_route_missing_audio_url():
     response = client.post(
         "/api/v1/transcribe",
-        json={"provider": "whisper", "model": "tiny"},  # Missing audio_url
+        json={"provider": "whisper", "model": "medium"},  # Missing audio_url
     )
     assert response.status_code == 422
     data = response.json()
@@ -66,7 +66,7 @@ def test_transcribe_route_success(mock_transcribe):
     mock_transcribe.return_value = {
         "status": "success",
         "provider": "whisper",
-        "model": "tiny",
+        "model": "medium",
         "audio_url": "https://example.com/audio.mp3",
         "transcript": "Hello world",
         "language": "en",
@@ -88,7 +88,7 @@ def test_transcribe_route_success(mock_transcribe):
 
     payload = {
         "provider": "whisper",
-        "model": "tiny",
+        "model": "medium",
         "audio_url": "https://example.com/audio.mp3",
     }
 
@@ -98,7 +98,7 @@ def test_transcribe_route_success(mock_transcribe):
     assert response.json() == {
         "status": "success",
         "provider": "whisper",
-        "model": "tiny",
+        "model": "medium",
         "audio_url": "https://example.com/audio.mp3",
         "transcript": "Hello world",
         "language": "en",

@@ -13,7 +13,7 @@ class TranscriptionManager:
     def transcribe(request: TranscribeRequest):
         audio_url = request.audio_url
         provider_name = request.provider.value
-        model_name = request.model.value if request.model else "base"
+        model_name = request.model.value if request.model else "medium"
 
         if provider_name == "whisper":
             provider = WhisperLocalProvider(model_size=model_name)

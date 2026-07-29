@@ -13,7 +13,7 @@ from app.services.transcriber import TranscriptionManager
 
 #### Whisper Local Provider Tests ####
 @patch("app.services.transcriber.WhisperLocalProvider")
-def test_transcription_manager_whisper_tiny_success(mock_whisper):
+def test_transcription_manager_whisper_medium_success(mock_whisper):
     # Setup mock behavior
     mock_instance = MagicMock()
     mock_instance.transcribe.return_value = {
@@ -27,7 +27,7 @@ def test_transcription_manager_whisper_tiny_success(mock_whisper):
     request = TranscribeRequest(
         audio_url="https://example.com/audio.mp3",
         provider=TranscriptionProvider.whisper,
-        model=TranscriptionModel.tiny,
+        model=TranscriptionModel.medium,
     )
 
     # Call the manager
@@ -37,7 +37,7 @@ def test_transcription_manager_whisper_tiny_success(mock_whisper):
     assert response.status == "success"
     assert response.transcript == "hello world"
     assert response.language == "en"
-    assert response.model == "tiny"
+    assert response.model == "medium"
     assert response.audio_url == request.audio_url
     assert response.provider == TranscriptionProvider.whisper
     assert isinstance(response.segments, list)

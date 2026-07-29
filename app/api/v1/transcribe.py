@@ -24,7 +24,7 @@ router = APIRouter()
                     "example": {
                         "status": "success",
                         "provider": "whisper",
-                        "model": "tiny",
+                        "model": "medium",
                         "audio_url": "https://example.com/audio.mp3",
                         "transcript": "Transcribed text goes here.",
                         "language": "en",

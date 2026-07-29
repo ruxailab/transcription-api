@@ -5,7 +5,7 @@ from fastapi import HTTPException
 
 
 def test_whisper_provider_invalid_url_format():
-    provider = WhisperLocalProvider(model_size="tiny")
+    provider = WhisperLocalProvider(model_size="medium")
 
     with pytest.raises(
         ValueError,
@@ -15,7 +15,7 @@ def test_whisper_provider_invalid_url_format():
 
 
 def test_whisper_provider_invalid_url():
-    provider = WhisperLocalProvider(model_size="tiny")
+    provider = WhisperLocalProvider(model_size="medium")
 
     with pytest.raises(
         HTTPException,
@@ -41,7 +41,7 @@ def test_whisper_provider_success(mock_get, mock_load_model):
     }
     mock_load_model.return_value = mock_model
 
-    provider = WhisperLocalProvider(model_size="tiny")
+    provider = WhisperLocalProvider(model_size="medium")
     result = provider.transcribe("https://example.com/audio.mp3")
 
     assert result["transcript"] == "Hello world"

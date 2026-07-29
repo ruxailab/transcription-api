@@ -37,7 +37,7 @@ def test_transcribe_invalid_model_for_whisper():
 def test_transcribe_whsiper_invalid_url():
     response = client.post(
         "/api/v1/transcribe",
-        json={"audio_url": "not-a-valid-url", "provider": "whisper", "model": "tiny"},
+        json={"audio_url": "not-a-valid-url", "provider": "whisper", "model": "medium"},
     )
     assert response.status_code == 422  # Pydantic will reject invalid HttpUrl
     data = response.json()
@@ -45,13 +45,13 @@ def test_transcribe_whsiper_invalid_url():
     assert "audio_url" in data["details"]
 
 
-def test_transcribe_whisper_tiny_success():
+def test_transcribe_whisper_medium_success():
     response = client.post(
         "/api/v1/transcribe",
         json={
             "audio_url": "https://thevoiceovervoice.co.uk/wp-content/uploads/Posy_British-English_Trailer-Demo.mp3",
             "provider": "whisper",
-            "model": "tiny",
+            "model": "medium",
         },
     )
 
@@ -60,7 +60,7 @@ def test_transcribe_whisper_tiny_success():
 
     assert data["status"] == "success"
     assert data["provider"] == "whisper"
-    assert data["model"] == "tiny"
+    assert data["model"] == "medium"
     assert (
         "transcript" in data
         and isinstance(data["transcript"], str)
