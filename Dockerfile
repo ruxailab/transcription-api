@@ -11,6 +11,9 @@ RUN pip install --upgrade pip \
     && pip install torch --index-url https://download.pytorch.org/whl/cpu \
     && pip install -r requirements.txt
 
+# Download Whisper model at build time (persists in the image)
+ENV XDG_CACHE_HOME=/root/.cache
+RUN python -c "import whisper; whisper.load_model('medium')"
 
 COPY . .
 
