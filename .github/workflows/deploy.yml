@@ -11,6 +11,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "app/**"
+      - ".github/workflows/**"
+
+concurrency:
+  group: deploy-cloud-run
+  cancel-in-progress: true
 
 env:
   PROJECT_ID: ruxailab-develop

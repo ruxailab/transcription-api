@@ -1,7 +1,9 @@
-FROM wallies/python-cuda:3.12-cuda12.2-runtime
+# FROM wallies/python-cuda:3.12-cuda12.2-runtime
+FROM python:3.12-slim
 
 # install ffmpeg
-RUN apt-get -y update && apt-get -y upgrade && apt-get install -y --no-install-recommends ffmpeg
+RUN apt-get -y update && apt-get -y upgrade && apt-get install -y --no-install-recommends ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory to /sentiment-analysis-api
 WORKDIR /app
@@ -11,7 +13,10 @@ COPY requirements.txt .
 
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --upgrade pip 
+    && pip install torch --index-url https://download.pytorch.org/whl/cpu 
+    && pip install -r requirements.txt
+
 
 # Copy code
 COPY . .

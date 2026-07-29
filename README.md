@@ -89,76 +89,69 @@ You can use sample audio files from:
 
 ---
 ## 🛠️ Deployment Guide
-Deploy a Dockerized FastAPI service to Google Cloud Run with NVIDIA L4 GPUs. Images are stored in Artifact Registry and built with Cloud Build.
+
+The API is deployed as a **CPU-only** Dockerized FastAPI service on **Google Cloud Run**. On every push to `main`, GitHub Actions builds the image, pushes it to Artifact Registry, and deploys to Cloud Run (see [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)).
+
+| Setting | Value |
+|---|---|
+| Project | `ruxailab-develop` |
+| Region | `us-central1` |
+| Artifact Registry repo | `containers` |
+| Image | `transcription-api` |
+| Cloud Run service | `transcription-api` |
+| Resources | 2 CPU · 2 Gi memory · port 8000 |
+| Runtime device | `DEVICE=cpu` |
 
 ### Prerequisites
 
-- A Google Cloud project (e.g. `ruxailab-develop`)
-- **gcloud CLI** installed: [Install guide](https://cloud.google.com/sdk/docs/install)
-- Billing enabled on the GCP project
+- Google Cloud project with billing enabled
+- Artifact Registry repository `containers` in `us-central1`
+- APIs enabled: Artifact Registry, Cloud Run
+- GitHub repository secrets (required by the workflow):
+  - **`GCP_SA_KEY`** — JSON key for a service account with Artifact Registry Writer, Cloud Run Admin, and Service Account User
+  - **`OPENAI_API_KEY`** — injected into the Cloud Run service as an env var
 
-### Set your active project & region
+### Automatic deploy (recommended)
+
+1. Configure the secrets above in the GitHub repository settings.
+2. Push (or merge) to `main`.
+3. The workflow will:
+   - Authenticate to GCP with `GCP_SA_KEY`
+   - Build and push `us-central1-docker.pkg.dev/ruxailab-develop/containers/transcription-api:sha-<short-sha>`
+   - Deploy the image to Cloud Run service `transcription-api` with `DEVICE=cpu` and `OPENAI_API_KEY`
+
+### Manual deploy (optional)
+
+Use this only when you need to deploy outside CI (e.g. a hotfix from a local machine).
+
 ```bash
-# Project / region / registry
-PROJECT_ID="ruxailab-develop"     # your-gcp-project
-REGION="europe-west4"             # choose a region near you / with GPU
-REPO="containers"                 # Artifact Registry repo name
-
-# Image naming
+PROJECT_ID="ruxailab-develop"
+REGION="us-central1"
+REPO="containers"
 IMAGE="transcription-api"
-TAG="gpu-v1"                      # Change per New Releases :D
+SERVICE="transcription-api"
+TAG="sha-$(git rev-parse --short HEAD)"
+IMAGE_URI="${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/${IMAGE}:${TAG}"
 
-# Cloud Run service name
-export SERVICE="transcription-api-gpu"
-```
-
-### Authenticate & set project/region
-```bash
 gcloud auth login
-
-# Set your active project & region
 gcloud config set project "$PROJECT_ID"
-gcloud config set run/region "$REGION"
-```
+gcloud auth configure-docker "${REGION}-docker.pkg.dev"
 
-### Enable required APIs
-```bash
-gcloud services enable   artifactregistry.googleapis.com   run.googleapis.com   cloudbuild.googleapis.com
-```
+docker build -t "${IMAGE_URI}" .
+docker push "${IMAGE_URI}"
 
-### Create Artifact Registry (Docker)
-```bash
-gcloud artifacts repositories create "$REPO"   --repository-format=docker   --location="$REGION"
-```
-
-### Build & Push the Image (Cloud Build)
-```bash
-gcloud builds submit   --tag "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG" .
-```
-
-### Deploy to Cloud Run with GPU (L4)
-```bash
-gcloud beta run deploy "$SERVICE"   --image "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG"   --region "$REGION"   --allow-unauthenticated   --gpu 1   --gpu-type nvidia-l4   --cpu 4   --memory 16Gi   --concurrency 1   --no-cpu-throttling   --port 8000   --set-env-vars "DEVICE=cuda,OPENAI_API_KEY=YOUR_API_KEY_HERE"
-```
-
-### Updating to a New Version
-```bash
-export TAG="gpu-v2"
-gcloud builds submit   --tag "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG" .
-
-gcloud beta run deploy "$SERVICE"   --image "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG"   --region "$REGION"   --allow-unauthenticated   --gpu 1   --gpu-type nvidia-l4   --cpu 4   --memory 16Gi   --concurrency 1   --no-cpu-throttling   --port 8000
-```
-
-### Optional: CPU-only Deployment
-```bash
-export TAG="v1"
-gcloud builds submit   --tag "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG" .
-
-gcloud run deploy "transcription-api"   --image "$REGION-docker.pkg.dev/$PROJECT_ID/$REPO/$IMAGE:$TAG"   --region "$REGION"   --allow-unauthenticated   --cpu 2   --memory 2Gi   --port 8000  --set-env-vars "DEVICE=cuda,OPENAI_API_KEY=YOUR_API_KEY_HERE"
+gcloud run deploy "${SERVICE}" \
+  --image "${IMAGE_URI}" \
+  --region "${REGION}" \
+  --allow-unauthenticated \
+  --cpu 2 \
+  --memory 2Gi \
+  --port 8000 \
+  --set-env-vars "DEVICE=cpu,OPENAI_API_KEY=${OPENAI_API_KEY}"
 ```
 
 <!-- GSoC Docs -->
-## <img align="center" width="60px" src="https://en.opensuse.org/images/9/91/Gsocsun.png"> GSoC Docs <a id="gsoc"></a>
+## GSoC Docs <a id="gsoc"></a>
 This repository is part of the [Google Summer of Code (GSoC) 2025](https://summerofcode.withgoogle.com/) program.
 
 - **Contributor:** [Basma Elhoseny](https://github.com/basmaelhoseny01)
