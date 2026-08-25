@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  Deploy:
     uses: ./.github/workflows/deploy-reusable.yml
     with:
       project_id: ruxailab-prod
