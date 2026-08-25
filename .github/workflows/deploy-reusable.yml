@@ -1,38 +1,62 @@
-# Deploy Transcription API to Cloud Run (CPU-only).
+# Shared build + deploy logic for Cloud Run (CPU-only).
+# Called by deploy-prod.yml and deploy-dev.yml.
 #
-# Required GitHub Secrets:
-#   - GCP_SA_KEY: JSON key for a GCP service account with Artifact Registry
-#     Writer, Cloud Run Admin, and Service Account User roles
+# Required secrets (mapped by each caller — keys differ per GCP project):
+#   - GCP_SA_KEY: JSON key for that environment's GCP service account
+#     (Artifact Registry Writer, Cloud Run Admin, Service Account User)
 #   - OPENAI_API_KEY: injected into the Cloud Run service as an env var
 
-name: Deploy to Cloud Run
+name: Deploy to Cloud Run (reusable)
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "app/**"
-      - ".github/workflows/**"
-      - "Dockerfile"
-
-concurrency:
-  group: deploy-cloud-run
-  cancel-in-progress: true
-
-env:
-  PROJECT_ID: ruxailab-develop
-  REGION: us-central1
-  REPO: containers
-  IMAGE: transcription-api
-  SERVICE: transcription-api
+  workflow_call:
+    inputs:
+      environment:
+        description: GitHub Environment name (production | development)
+        required: true
+        type: string
+      project_id:
+        description: GCP project ID
+        required: true
+        type: string
+      service:
+        description: Cloud Run service name
+        required: true
+        type: string
+      region:
+        description: GCP region
+        required: false
+        type: string
+        default: us-central1
+      repo:
+        description: Artifact Registry repository name
+        required: false
+        type: string
+        default: containers
+      image:
+        description: Docker image name
+        required: false
+        type: string
+        default: transcription-api
+    secrets:
+      GCP_SA_KEY:
+        required: true
+      OPENAI_API_KEY:
+        required: true
 
 jobs:
   build:
     name: Build and Push
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     outputs:
       image_uri: ${{ steps.image.outputs.image_uri }}
+
+    env:
+      PROJECT_ID: ${{ inputs.project_id }}
+      REGION: ${{ inputs.region }}
+      REPO: ${{ inputs.repo }}
+      IMAGE: ${{ inputs.image }}
 
     steps:
       - name: Checkout
@@ -64,6 +88,12 @@ jobs:
     name: Deploy to Cloud Run
     runs-on: ubuntu-latest
     needs: build
+    environment: ${{ inputs.environment }}
+
+    env:
+      PROJECT_ID: ${{ inputs.project_id }}
+      REGION: ${{ inputs.region }}
+      SERVICE: ${{ inputs.service }}
 
     steps:
       - name: Authenticate to Google Cloud

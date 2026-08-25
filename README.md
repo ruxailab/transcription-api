@@ -90,7 +90,12 @@ You can use sample audio files from:
 ---
 ## 🛠️ Deployment Guide
 
-The API is deployed as a **CPU-only** Dockerized FastAPI service on **Google Cloud Run**. On every push to `main`, GitHub Actions builds the image, pushes it to Artifact Registry, and deploys to Cloud Run (see [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)).
+The API is deployed as a **CPU-only** Dockerized FastAPI service on **Google Cloud Run**. Shared deploy logic lives in [`.github/workflows/deploy-reusable.yml`](.github/workflows/deploy-reusable.yml); callers trigger it per branch:
+
+| Branch | Workflow | GitHub Environment | Cloud Run service |
+|---|---|---|---|
+| `main` | [`deploy-prod.yml`](.github/workflows/deploy-prod.yml) | `production` | `transcription-api` |
+| `develop` | [`deploy-dev.yml`](.github/workflows/deploy-dev.yml) | `development` | `transcription-api-dev` |
 
 | Setting | Value |
 |---|---|
@@ -98,8 +103,7 @@ The API is deployed as a **CPU-only** Dockerized FastAPI service on **Google Clo
 | Region | `us-central1` |
 | Artifact Registry repo | `containers` |
 | Image | `transcription-api` |
-| Cloud Run service | `transcription-api` |
-| Resources | 2 CPU · 2 Gi memory · port 8000 |
+| Resources | 2 CPU · 8 Gi memory · port 8000 |
 | Runtime device | `DEVICE=cpu` |
 
 ### Prerequisites
@@ -107,18 +111,20 @@ The API is deployed as a **CPU-only** Dockerized FastAPI service on **Google Clo
 - Google Cloud project with billing enabled
 - Artifact Registry repository `containers` in `us-central1`
 - APIs enabled: Artifact Registry, Cloud Run
-- GitHub repository secrets (required by the workflow):
-  - **`GCP_SA_KEY`** — JSON key for a service account with Artifact Registry Writer, Cloud Run Admin, and Service Account User
+- GitHub Environments `production` and `development` (created automatically on first run, or manually in Settings → Environments)
+- GitHub repository secrets:
+  - **`GCP_SA_KEY_PROD`** — JSON key for the production GCP service account (used by `deploy-prod.yml`)
+  - **`GCP_SA_KEY_DEV`** — JSON key for the development GCP service account (used by `deploy-dev.yml`)
   - **`OPENAI_API_KEY`** — injected into the Cloud Run service as an env var
 
 ### Automatic deploy (recommended)
 
 1. Configure the secrets above in the GitHub repository settings.
-2. Push (or merge) to `main`.
+2. Push (or merge) to `main` (prod) or `develop` (dev).
 3. The workflow will:
-   - Authenticate to GCP with `GCP_SA_KEY`
+   - Authenticate to GCP with `GCP_SA_KEY_PROD` or `GCP_SA_KEY_DEV` (mapped to `GCP_SA_KEY` in the reusable workflow)
    - Build and push `us-central1-docker.pkg.dev/ruxailab-develop/containers/transcription-api:sha-<short-sha>`
-   - Deploy the image to Cloud Run service `transcription-api` with `DEVICE=cpu` and `OPENAI_API_KEY`
+   - Deploy the image to the matching Cloud Run service with `DEVICE=cpu` and `OPENAI_API_KEY`
 
 ### Manual deploy (optional)
 
