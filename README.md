@@ -92,10 +92,10 @@ You can use sample audio files from:
 
 The API is deployed as a **CPU-only** Dockerized FastAPI service on **Google Cloud Run**. Shared deploy logic lives in [`.github/workflows/deploy-reusable.yml`](.github/workflows/deploy-reusable.yml); callers trigger it per branch:
 
-| Branch | Workflow | GitHub Environment | Cloud Run service |
-|---|---|---|---|
-| `main` | [`deploy-prod.yml`](.github/workflows/deploy-prod.yml) | `production` | `transcription-api` |
-| `develop` | [`deploy-dev.yml`](.github/workflows/deploy-dev.yml) | `development` | `transcription-api-dev` |
+| Branch | Workflow | Cloud Run service |
+|---|---|---|
+| `main` | [`deploy-prod.yml`](.github/workflows/deploy-prod.yml) | `transcription-api` |
+| `develop` | [`deploy-dev.yml`](.github/workflows/deploy-dev.yml) | `transcription-api-dev` |
 
 | Setting | Value |
 |---|---|
@@ -111,11 +111,10 @@ The API is deployed as a **CPU-only** Dockerized FastAPI service on **Google Clo
 - Google Cloud project with billing enabled
 - Artifact Registry repository `containers` in `us-central1`
 - APIs enabled: Artifact Registry, Cloud Run
-- GitHub Environments `production` and `development` (created automatically on first run, or manually in Settings → Environments)
 - GitHub repository secrets:
   - **`GCP_SA_KEY_PROD`** — JSON key for the production GCP service account (used by `deploy-prod.yml`)
   - **`GCP_SA_KEY_DEV`** — JSON key for the development GCP service account (used by `deploy-dev.yml`)
-  - **`OPENAI_API_KEY`** — injected into the Cloud Run service as an env var
+  - **`OPENAI_API_KEY_PROD`** / **`OPENAI_API_KEY_DEV`** — injected into the matching Cloud Run service as an env var
 
 ### Automatic deploy (recommended)
 

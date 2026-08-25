@@ -20,8 +20,10 @@ jobs:
   deploy:
     uses: ./.github/workflows/deploy-reusable.yml
     with:
-      environment: production
-      project_id: ruxailab-develop
+      project_id: ruxailab-prod
+      region: us-central1
+      repo: containers
+      image: transcription-api
       service: transcription-api
     secrets:
       GCP_SA_KEY: ${{ secrets.GCP_SA_KEY_PROD }}

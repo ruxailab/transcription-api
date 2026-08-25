@@ -11,10 +11,6 @@ name: Deploy to Cloud Run (reusable)
 on:
   workflow_call:
     inputs:
-      environment:
-        description: GitHub Environment name (production | development)
-        required: true
-        type: string
       project_id:
         description: GCP project ID
         required: true
@@ -48,7 +44,6 @@ jobs:
   build:
     name: Build and Push
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
     outputs:
       image_uri: ${{ steps.image.outputs.image_uri }}
 
@@ -88,7 +83,6 @@ jobs:
     name: Deploy to Cloud Run
     runs-on: ubuntu-latest
     needs: build
-    environment: ${{ inputs.environment }}
 
     env:
       PROJECT_ID: ${{ inputs.project_id }}
